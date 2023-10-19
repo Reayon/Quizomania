@@ -1,9 +1,14 @@
+
 body{
     background-image: url(https://media.npr.org/assets/img/2022/12/22/gettyimages-1245203807-1536x1029_wide-9982607ca51f99999656d993bf5511d42533c0f2-s1100-c50.jpg);
-    background-blend-mode: darken;
     background-position: center;
     background-attachment: fixed;
     font-family: 'Roboto', sans-serif;
+}
+img{
+    height: 100px;
+    width: 120px;
+    margin-left: 30px;
 }
 a{
     margin-bottom: 20px;
@@ -15,20 +20,46 @@ a:visited{
     color: black;
 }
 a:hover{
-    color: white;
+    color: black;
     cursor: pointer;
 }
 #container{
     position: relative;
     min-height: 100vh;
 }
+#baner
+{
+    position: fixed;
+    top: 0;
+    background-color: #e0e5eb;
+    color: black;
+    margin-bottom: 20px;
+    height: 100px;
+    width: 100%;
+    border: 2px solid black; 
+}
+#banerL{
+    float: left;
+    width: 210px;
+}
+#banerR
+{
+    float: right;
+    padding: 20px;
+    width: 760px;
+    font-size: 16x;
+    text-align: justify;
+    text-align: center;
+
+}
 #content{
     float: left;
-    height: 850px;
-    width: 500px;
+    height: 800px;
+    width: 1830px;
+    margin: 30px;
+    margin-top: 100px;
     background-color: azure;
-    padding-top: 20px;
-    padding-bottom: 20px;
+    opacity: 0.7;
 }
 #footer{
     position: absolute;
@@ -41,46 +72,47 @@ a:hover{
     width: 100%;
     height: 2.5rem;
 }
-#text{
-    height: 25px;
-    border-radius: 5px;
-    padding: 4px;
-    border: solid thin #aaa;
-    width: 100%;
-}
-
-#button{
+.optionl {
     float: left;
-    padding: 10px;
-    width: 100px;
-    color: white;
-    background-color: #3494db;
-    border: none;
+    --b: 0.1em;   
+    --c: #1095c1; 
+    
+    color: #0000;
+    padding-block: var(--b);
+    background: 
+      linear-gradient(var(--c) 50%,#000 0) 0% calc(100% - var(--_p,0%))/100% 200%,
+      linear-gradient(var(--c) 0 0) 0% var(--_p,0%)/var(--_p,0%) var(--b) no-repeat;
+    -webkit-background-clip: text,padding-box;
+            background-clip: text,padding-box;
+    transition: .3s var(--_s,0s) linear,background-size .3s calc(.3s - var(--_s,0s));
+  }
+  .optionl:hover {
+    --_p: 100%;
+    --_s: .3s;
+  }
+  .option {
+    padding: 5px;
+    float: right;
+    --b: 0.1em;   
+    --c: #1095c1; 
+    
+    color: #0000;
+    padding-block: var(--b);
+    background: 
+      linear-gradient(var(--c) 50%,#000 0) 0% calc(100% - var(--_p,0%))/100% 200%,
+      linear-gradient(var(--c) 0 0) 0% var(--_p,0%)/var(--_p,0%) var(--b) no-repeat;
+    -webkit-background-clip: text,padding-box;
+            background-clip: text,padding-box;
+    transition: .3s var(--_s,0s) linear,background-size .3s calc(.3s - var(--_s,0s));
+  }
+  .option:hover {
+    --_p: 100%;
+    --_s: .3s;
+  }
+  p {
+    font-family: system-ui, sans-serif;
+    font-size: 1rem;
+    margin:0 auto;
     cursor: pointer;
-}
-
-#box{
-    float: left;
-    text-align: right;
-    margin-top: 150px;
-    margin-left: 150px;
-    background-color: #adadad;
-    width: 300px;
-    padding: 20px;
-}
-.optionl
-{
-float: right;
-min-width: 50px;
-font-size: 18px;
-height: 25px;
-padding: 10px;
-border-right: 2px dotted #444444 ;
-}
-.optionl:hover
-{
-background-color: #e0e5eb;
-color: white;
-cursor: pointer;
-}
-
+    padding: 0 .1em;
+  }

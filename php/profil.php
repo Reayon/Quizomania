@@ -29,6 +29,12 @@ session_start();
             </div>
             </div>
             <div id="content">
+                <p><h1>Twój profil </h1>
+	                <br>
+	                Witaj, <?php echo $user_data['username']; ?>
+                    <button type="submit" class="btn btn-warning"><a href="logout.php">Wyloguj</a></button>
+		            </div>
+	            </p>
             </div>
             <div id="footer">Filip B, Dawid C, Piotr K <br> &copy; Wszelkie prawa zastrzeżone</div>
         </div>

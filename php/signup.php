@@ -15,7 +15,7 @@ session_start();
 		{
 
 			//save to database
-			$user_id = random_num(20);
+			$userid = random_num(20);
 			$query = "insert into users (userid,username,password) values ('$userid','$username','$password')";
 
 			mysqli_query($con, $query);
@@ -34,7 +34,7 @@ session_start();
         <meta charset="UTF-8">
         <meta name="description" content="www.quizomania.pl">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="stylesheet" href="../css/styleStronaGlowna.css">
+        <link rel="stylesheet" href="../css/style.css">
         <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
     <link rel="icon" type="image/x-icon" href="../src/logo.ico">
         <title>Quizomania</title>
@@ -46,7 +46,9 @@ session_start();
                 <div id="box">
 		        <form method="post">
 			    <div style="font-size: 20px;margin: 10px;color: white;"><h1>Zarejestruj się</h1></div>
+				<label class="form-label">Login</label>
 			    <input id="text" type="text" name="username"><br><br>
+				<label class="form-label">Hasło</label>
 			    <input id="text" type="password" name="password"><br><br>
 			    <input id="button" type="submit" value="Login"><br>
 			    <a href="../php/stronaGlownaLogin.php">Masz konto? Zaloguj się</a>
