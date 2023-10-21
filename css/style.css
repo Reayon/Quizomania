@@ -67,19 +67,3 @@ a:hover{
     width: 300px;
     padding: 20px;
 }
-.optionl
-{
-float: right;
-min-width: 50px;
-font-size: 18px;
-height: 25px;
-padding: 10px;
-border-right: 2px dotted #444444 ;
-}
-.optionl:hover
-{
-background-color: #e0e5eb;
-color: white;
-cursor: pointer;
-}
-

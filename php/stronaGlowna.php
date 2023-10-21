@@ -64,7 +64,7 @@ $kategorie = $statement->fetchAll(PDO::FETCH_ASSOC);
                             <th scope="row"><?php echo $i + 1 ?></th>
                             <td><?php echo $kategoria['nazwa'] ?></td>
                             <td>
-                                    <a href="quiz/php/quiz.php?id=<?php echo $kategoria['ID_kategorii'] ?>" class="btn btn-sm btn-outline-primary">
+                                    <a href="../php/quiz.php?id=<?php echo $kategoria['ID_kategorii'] ?>" class="btn btn-sm btn-outline-primary">
                                     <button class="button-3" role="button">Rozpocznij quiz</button></a>
                             </td>
                         </tr>
