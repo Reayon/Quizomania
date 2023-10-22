@@ -8,5 +8,5 @@ if(isset($_SESSION['userid']))
 
 }
 
-header("Location: stronaGlownaLogin.php");
+header("Location: login.php");
 die;

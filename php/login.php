@@ -1,4 +1,5 @@
 <?php 
+
 session_start();
 
 	include("connection.php");
@@ -7,24 +8,36 @@ session_start();
 
 	if($_SERVER['REQUEST_METHOD'] == "POST")
 	{
+		//something was posted
 		$username = $_POST['username'];
 		$password = $_POST['password'];
 
 		if(!empty($username) && !empty($password) && !is_numeric($username))
 		{
 
-			$userid = random_num(20);
-			$query = "insert into users (userid,username,password) values ('$userid','$username','$password')";
+			//read from database
+			$query = "select * from users where username = '$username' limit 1";
+			$result = mysqli_query($con, $query);
 
-			mysqli_query($con, $query);
+			if($result)
+			{
+				if($result && mysqli_num_rows($result) > 0)
+				{
 
-			header("Location: login.php");
-			die;
-		}else
-		{
-			echo "Please enter some valid information!";
-		}
+					$user_data = mysqli_fetch_assoc($result);
+					
+					if($user_data['password'] === $password)
+					{
+
+						$_SESSION['userid'] = $user_data['userid'];
+						header("Location: stronaGlowna.php");
+						die;
+					}
+				}
+			}
+		}	
 	}
+
 ?>
 <!DOCTYPE html>
 <html lang="pl">
@@ -42,15 +55,15 @@ session_start();
             <div id="content">
                 <img src="../src/logo3.png">
                 <div id="box">
-		        <form method="post">
-			    	<div style="font-size: 20px;margin: 10px;color: black;"><h1>Zarejestruj się</h1></div>
-					<label class="form-label">Login</label>
-			    	<input id="text" type="text" name="username"><br><br>
-					<label class="form-label">Hasło</label>
-			    	<input id="text" type="password" name="password"><br><br>
-			    	<input id="button" type="submit" value="Login"><br>
-			    	<a href="../php/login.php">Masz konto? Zaloguj się</a>
-				</form>
+		        	<form method="post">
+			    		<div style="font-size: 20px;margin: 10px;color: black;"><h1>Zaloguj się</h1></div>
+						<label class="form-label">Login</label>
+			    		<input id="text" type="text" name="username"><br><br>
+						<label class="form-label">Hasło</label>
+			    		<input id="text" type="password" name="password"><br><br>
+			    		<input id="button" type="submit" value="Login"><br>
+			    	<a href="../php/signup.php">Zarejestruj się</a>
+					</form>
 				</div>
             </div>
         </div>

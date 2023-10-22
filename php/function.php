@@ -19,7 +19,7 @@ function check_login($con)
 	}
 
 	//redirect to login
-	header("Location: stronaGlownaLogin.php");
+	header("Location: login.php");
 	die;
 
 }
