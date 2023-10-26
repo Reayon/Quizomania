@@ -7,29 +7,6 @@ session_start();
 	$user_data = check_login($con);
 ?>
 <?php
-$host = "localhost";
-$username = "root";
-$password = "";
-$database = "quizy";
-
-$conn = new mysqli($host, $username, $password, $database);
-/*$pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-$search = $_GET['search'] ?? '';
-if ($search) {
-    $statement = $pdo->prepare('SELECT * FROM kategorie WHERE nazwa LIKE :nazwa');
-    $statement->bindValue(':nazwa', "%$search%");
-}
-<form>
-                    <div class="input-group mb-3">
-                        <input type="text" class="form-control" placeholder="Wyszukaj po nazwie" name="search" value="<?php echo $search ?>">
-                        <button class="btn btn-outline-secondary" type="submit">Wyszukaj</button>
-                    </div>
-                </form>
-else{
-    $statement = $pdo->prepare('SELECT * FROM kategorie ORDER BY nazwa');
-}
-$statement->execute();
-$kategorie = $statement->fetchAll(PDO::FETCH_ASSOC);*/
 
 // Zapytanie do bazy danych w celu pobrania kategorii
 $query = "SELECT * FROM kategorie";
@@ -41,28 +18,36 @@ $result = $conn->query($query);
         <meta charset="UTF-8">
         <meta name="description" content="www.quizomania.pl">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="stylesheet" href="../css/styleStronaGlowna.css">
+        <link rel="stylesheet" href="../css/styl.css">
         <link rel="stylesheet" href="../css/buttons.css">
         <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
     <link rel="icon" type="image/x-icon" href="../src/logo3.ico">
         <title>Quizomania</title>
     </head>
     <body>
-        <div id="container">
-        <div id="baner">
-                <div id="banerL"><a href="../php/stronaGlowna.php" ><img src="../src/logo3.png"/></a></div>
-                <div id="banerR">
-                    <div class="option"><p>Witaj, <?php echo $user_data['username']; ?></p><a href="../php/logout.php">Wyloguj</a></div>
-                    <div class="option"><a href="../php/stronaGlowna.php" >Strona główna</a></div>
-                    <div style="clear: both;"></div>
-            </div>
-            </div>
-            <div id="content">
+    <header>
+			<img class="logo" src="../src/logo3.png" alt="logo">
+				<nav>
+					<ul class="nav_links">
+							<li><a href="../php/stronaGlowna.php">Strona główna</a></li>
+							<li><a href="#" >Nasze quizy</a></li>
+							<li><a href="#" >O nas</a></li>
+					</ul>
+				</nav>
+					<a class="cta" href="../php/logout.php"><button>Wyloguj sie</button></a>
+		</header>
+        <div class="menu">
+                <!---<form>
+                    <div class="txt_field">
+                        <input type="text" class="form-control" placeholder="Wyszukaj po nazwie" name="search" value="<?php echo $search ?>">
+                    </div>
+                </form>--->
+                <h2>Lista Quizów</h2>
                 <table class="table">
                     <thead>
                         <tr>
-                            <th scope="col">Nr</th>
                             <th scope="col">Nazwa</th>
+                            <th scope="col"></th>
                         </tr>
                     </thead>
                     <tbody>
@@ -72,15 +57,22 @@ $result = $conn->query($query);
                             while ($row = $result->fetch_assoc()) {
                             $category_id = $row['ID_kategorii'];
                             $category_name = $row['nazwa'];
-                            echo "<li><a href='quiz.php?category=$category_id'>$category_name</a></li>";
+                            echo "<tr>";
+                            echo "<td><p>$category_name</p></td>";
+                            echo "<td><a style='color: black;' href='quiz.php?category=$category_id'>Rozpocznij quiz</a></td>";
+                            echo "</tr>";
                             }
                         } else {
                             echo "Brak dostępnych kategorii.";
                         }
                     ?>
-                </table>
-            </div>
-            <div id="footer">Filip B, Dawid C, Piotr K <br> &copy; Wszelkie prawa zastrzeżone</div>
-        </div>
+                    </table>
+                </div>
+                <footer>
+            	<div class="footer-bottom">
+					<h2>Quizomania</h2>
+						Filip B, Dawid C, Piotr K <br> &copy; Wszelkie prawa zastrzeżone.
+				</div>
+			</footer>
     </body>
 </html>

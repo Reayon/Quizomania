@@ -18,25 +18,29 @@ session_start();
         <title>Quizomania</title>
     </head>
     <body>
-        <div id="container">
-        <div id="baner">
-                <div id="banerL"><a href="../php/stronaGlowna.php" ><img src="../src/logo.png"/></a></div>
-                <div id="banerR">
-                    <div class="option"><a href="../php/logout.php">Wyloguj</a></div>
-                    <div class="option"><a href="../php/profil.php">Profil</a></div>
-                    <div class="option"><a href="../php/stronaGlowna.php" >Strona główna</a></div>
-                    <div style="clear: both;"></div>
-            </div>
-            </div>
-            <div id="content">
+    <header>
+			<img class="logo" src="../src/logoquiz.png" alt="logo">
+				<nav>
+					<ul class="nav_links">
+							<li><a href="../php/stronaGlowna.php" >Strona główna</a></li>
+							<li><a href="#" >Nasze quizy</a></li>
+							<li><a href="#" >O nas</a></li>
+					</ul>
+				</nav>
+                <a class="cta" href="../php/stronaGlowna.php"><button>Wyloguj sie</button></a>
+		</header>
+            <div class="center">
                 <p><h1>Twój profil </h1>
 	                <br>
 	                Witaj, <?php echo $user_data['username']; ?>
                     <button type="submit" class="btn btn-warning"><a href="logout.php">Wyloguj</a></button>
 		            </div>
 	            </p>
-            </div>
-            <div id="footer">Filip B, Dawid C, Piotr K <br> &copy; Wszelkie prawa zastrzeżone</div>
-        </div>
+            <footer>
+            	<div class="footer-bottom">
+					<h2>Quizomania</h2>
+						Filip B, Dawid C, Piotr K <br> &copy; Wszelkie prawa zastrzeżone.
+				</div>
+			</footer>
     </body>
 </html>

@@ -45,27 +45,40 @@ session_start();
         <meta charset="UTF-8">
         <meta name="description" content="www.quizomania.pl">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="stylesheet" href="../css/styleLoginSignup.css">
+        <link rel="stylesheet" href="../css/styl.css">
         <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
     <link rel="icon" type="image/x-icon" href="../src/logoikona.ico">
         <title>Quizomania</title>
     </head>
     <body>
-        <div id="container">
-            <div id="content">
-                <img src="../src/logo3.png">
-                <div id="box">
-		        	<form method="post">
-			    		<div style="font-size: 20px;margin: 10px;color: black;"><h1>Zaloguj się</h1></div>
-						<label class="form-label">Login</label>
-			    		<input id="text" type="text" name="username"><br><br>
-						<label class="form-label">Hasło</label>
-			    		<input id="text" type="password" name="password"><br><br>
-			    		<input id="button" type="submit" value="Login"><br>
-			    	<a href="../php/signup.php">Zarejestruj się</a>
-					</form>
+	<header>
+			<img class="logo" src="../src/logo3.png" alt="logo">
+		</header>
+        <div class="center">
+            <h1>Login</h1>
+			<form method="post">
+				<div class="txt_field">
+					<input type="text" name="username" required>
+					<span></span>
+					<label>Username</label>	
 				</div>
-            </div>
-        </div>
+				<div class="txt_field">
+					<input type="password" name="password" required>
+					<span></span>
+					<label>Password</label>	
+				</div>
+				<div class="pass">Forgot Password?</div>
+					<input type ="submit" value="Login">
+					<div class="signup_link">
+						Nie masz konta? <a href="../php/signup.php">Zarejestruj się</a>
+					</div>
+		</form>
+		</div>
+            <footer>
+            	<div class="footer-bottom">
+				<h2>Quizomania</h2>
+					Filip B, Dawid C, Piotr K <br> &copy; Wszelkie prawa zastrzeżone.
+				</div>
+			</footer>
     </body>
 </html>

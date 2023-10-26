@@ -12,23 +12,26 @@ session_start();
         <meta charset="UTF-8">
         <meta name="description" content="www.quizomania.pl">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="stylesheet" href="../css/styleStronaGlowna.css">
-        <link rel="stylesheet" href="../css/buttons.css">
+        <link rel="stylesheet" href="../css/styl.css">
         <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
     <link rel="icon" type="image/x-icon" href="../src/logo3.ico">
         <title>Quizomania</title>
     </head>
     <body>
-        <div id="container">
-        <div id="baner">
-                <div id="banerL"><a href="../php/stronaGlowna.php" ><img src="../src/logo3.png"/></a></div>
-                <div id="banerR">
-                    <div class="option"><p>Witaj, <?php echo $user_data['username']; ?></p><a href="../php/logout.php">Wyloguj</a></div>
-                    <div class="option"><a href="../php/stronaGlowna.php" >Strona główna</a></div>
-                    <div style="clear: both;"></div>
-            </div>
-            </div>
-            <div id="content">
+    <header>
+			<img class="logo" src="../src/logo3.png" alt="logo">
+				<nav>
+					<ul class="nav_links">
+							<li><a href="../php/stronaGlowna.php" >Strona główna</a></li>
+							<li><a href="#" >Nasze quizy</a></li>
+							<li><a href="#" >O nas</a></li>
+					</ul>
+				</nav>
+					<a class="cta" href="#"><button>Kontakt</button></a>
+		</header>
+        <div class="menuquiz">
+            <div style="background: linear-gradient(120deg, #2980b9, #8e44ad)">
+            <div id="pytanie">
                 <?php
                     // Połączenie z bazą danych
                      $host = "localhost";
@@ -84,50 +87,64 @@ if (isset($_GET['category'])) {
 
     
     echo "<h1>Kategoria Quizu</h1>";
-
-    if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['finish_quiz'])) {
-        // Sprawdzenie odpowiedzi i wyświetlenie wyniku
-        $user_answers = isset($_POST['user_answers']) ? $_POST['user_answers'] : array();
-        $score = 0;
-
-        foreach ($user_answers as $question_id => $user_answer_id) {
-            $correct_answer = null;
-
-            foreach ($questions[$question_id]['odpowiedzi'] as $answer) {
-                if ($answer['czy_poprawna']) {
-                    $correct_answer = $answer['id'];
-                    break;
-                }
-            }
-
-            if ($user_answer_id == $correct_answer) {
-                $score++;
-            }
+    if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+        // Obsługa odpowiedzi użytkownika
+        foreach ($_POST['user_answers'] as $question_id => $user_answer_id) {
+            $user_answers[$question_id] = $user_answer_id;
         }
-
-        echo "<p>Twój wynik: $score / " . count($questions) . "</p>";
-    } else {
+    }
         // Wyświetlenie wszystkich pytań i odpowiedzi
         foreach ($questions as $question_id => $question_data) {
             echo "<p><strong>Pytanie:</strong> " . $question_data['pytanie'] . "</p>";
             echo "<form method='post'>";
+            echo "<ul class='choices'>";
             foreach ($question_data['odpowiedzi'] as $answer) {
-                echo "<label><input type='radio' name='user_answers[$question_id]' value='" . $answer['id'] . "'>" . $answer['odpowiedz'] . "</label><br>";
+                echo "<li><label><input type='radio' name='user_answers[$question_id]' value='" . $answer['id'] . "'>" . $answer['odpowiedz'] . "</label></li>";
             }
-            echo "</form>";
+            echo "</ul>";
         }
 
         // Przycisk "Zakończ" po wybraniu odpowiedzi
-        echo '<form method="post">';
         echo '<input type="submit" name="finish_quiz" value="Zakończ">';
         echo '</form>';
-    }
+        if (isset($_POST['finish_quiz'])) {
+            // Sprawdzenie odpowiedzi i wyświetlenie wyniku
+            $score = 0;
+    
+            foreach ($user_answers as $question_id => $user_answer_id) {
+                $correct_answer = null;
+    
+                foreach ($questions[$question_id]['odpowiedzi'] as $answer) {
+                    if ($answer['czy_poprawna']) {
+                        $correct_answer = $answer['id'];
+                        break;
+                    }
+                }
+    
+                if ($user_answer_id == $correct_answer) {
+                    $score++;
+                }
+            }
+    
+            // Zapis wyniku do sesji
+        $_SESSION['score'] = $score;
+
+        // Przekierowanie na stronę wyników
+        header("Location: final.php");
+        exit();
+        }
 } else {
     echo "Nie wybrano kategorii.";
 }
                 ?>
             </div>
-            <div id="footer">Filip B, Dawid C, Piotr K <br> &copy; Wszelkie prawa zastrzeżone</div>
-        </div>
+                    </div>
+		        </div>
+            <footer>
+            	<div class="footer-bottom">
+					<h2>Quizomania</h2>
+						Filip B, Dawid C, Piotr K <br> &copy; Wszelkie prawa zastrzeżone.
+				</div>
+			</footer>
     </body>
 </html>
