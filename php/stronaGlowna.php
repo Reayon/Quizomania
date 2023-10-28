@@ -140,6 +140,11 @@ $result = $conn->query($query);
                         } else {
                             echo "Brak dostępnych kategorii.";
                         }
+                        
+                        $_SESSION['current_question'] = 0;
+                        $_SESSION['score'] = 0;
+
+
                     ?>
                     </tr>
                     </tbody>
