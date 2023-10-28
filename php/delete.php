@@ -47,25 +47,33 @@ $result = $conn->query($query);
                 <table class="table">
                     <thead>
                         <tr>
-                            <th scope="col">Nazwa</th>
+                            <th scope="col">Pomyślnie usunięto</th>
                             <th scope="col"></th>
                         </tr>
                     </thead>
                     <tbody>
                     <?php
-                        // Wyświetlenie dostępnych kategorii
-                        if ($result->num_rows > 0) {
-                            while ($row = $result->fetch_assoc()) {
-                            $category_id = $row['ID_kategorii'];
-                            $category_name = $row['nazwa'];
-                            echo "<tr>";
-                            echo "<td><p>$category_name</p></td>";
-                            echo "<td><a style='color: black;' href='quiz.php?category=$category_id'>Rozpocznij quiz</a></td>";
-                            echo "</tr>";
-                            }
-                        } else {
-                            echo "Brak dostępnych kategorii.";
+                         // Połączenie z bazą danych
+                        $host = "localhost";
+                        $username = "root";
+                        $password = "";
+                        $database = "quizy";
+     
+                        $conn = new mysqli($host, $username, $password, $database);
+     
+                        if ($conn->connect_error) {
+                            die("Błąd połączenia z bazą danych: " . $conn->connect_error);
+                        } 
+
+                        if (isset($_GET['category'])) {
+                            $category_id = $_GET['category'];
+                        
+                            $query = "DELETE FROM kategorie WHERE ID_kategorii = $category_id";
+
+                            $result = $conn->query($query);
+
                         }
+                        echo "<td><a style='color: black;' href='edytor.php'>Wróć do quizów</a></td>";
                     ?>
                     </table>
                 </div>

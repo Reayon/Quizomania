@@ -47,25 +47,39 @@ $result = $conn->query($query);
                 <table class="table">
                     <thead>
                         <tr>
-                            <th scope="col">Nazwa</th>
-                            <th scope="col"></th>
+                            <form action="<?php echo $_SERVER['PHP_SELF'];?>" method="post">
+                                <p>Wpisz nazwę kategorii: <input type="text" name="fname"></p><br>
+                                <p><input type="submit"></p><br>
+                            </form>
                         </tr>
                     </thead>
                     <tbody>
                     <?php
-                        // Wyświetlenie dostępnych kategorii
-                        if ($result->num_rows > 0) {
-                            while ($row = $result->fetch_assoc()) {
-                            $category_id = $row['ID_kategorii'];
-                            $category_name = $row['nazwa'];
-                            echo "<tr>";
-                            echo "<td><p>$category_name</p></td>";
-                            echo "<td><a style='color: black;' href='quiz.php?category=$category_id'>Rozpocznij quiz</a></td>";
-                            echo "</tr>";
+                         // Połączenie z bazą danych
+                        $host = "localhost";
+                        $username = "root";
+                        $password = "";
+                        $database = "quizy";
+     
+                        $conn = new mysqli($host, $username, $password, $database);
+     
+                        if ($conn->connect_error) {
+                            die("Błąd połączenia z bazą danych: " . $conn->connect_error);
+                        } 
+                        
+                        if ($_SERVER["REQUEST_METHOD"] == "POST") {
+                            // collect value of input field
+                            $name = $_POST['fname'];
+                            if (empty($name)) {
+                              echo "Name is empty";
+                            } else {
+                              echo $name;
+                              $sql = "INSERT INTO kategorie (nazwa) VALUES ('$name')";
+                              $result = $conn->query($sql);
                             }
-                        } else {
-                            echo "Brak dostępnych kategorii.";
-                        }
+                          }
+                        
+                        echo "<td><a style='color: black;' href='edytor.php'>Wróć do quizów</a></td>";
                     ?>
                     </table>
                 </div>

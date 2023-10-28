@@ -1,0 +1,73 @@
+body{
+    background-image: url(https://media.npr.org/assets/img/2022/12/22/gettyimages-1245203807-1536x1029_wide-9982607ca51f99999656d993bf5511d42533c0f2-s1100-c50.jpg);
+    background-position: center;
+    background-attachment: fixed;
+    font-family: 'Roboto', sans-serif;
+}
+a{
+    margin-bottom: 20px;
+    color: black;
+    float: center;
+    text-decoration: none;
+    transition: ease-out 0.5s;
+}
+a:visited{
+    color: black;
+}
+a:hover{
+    font-size: 17px;
+    cursor: pointer;
+    transition: ease-in 0.5s;
+}
+#container{
+    position: relative;
+    min-height: 95vh;
+}
+#content{
+    float: left;
+    height: 850px;
+    width: 500px;
+    background-color: azure;
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+#text{
+    height: 25px;
+    border-radius: 5px;
+    padding: 4px;
+    border: solid thin #aaa;
+    width: 100%;
+}
+
+#button{
+    float: left;
+    padding: 10px;
+    width: 100px;
+    color: white;
+    background-color: #3494db;
+    border: none;
+    cursor: pointer;
+    transition: ease-out 1s;
+}
+#button:hover{
+    font-size: 15px;
+    background-color: #128004;
+    transition: ease-in 1s;
+}
+
+#box{
+    text-align: right;
+    width: 300px;
+    padding: 20px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+img{
+    height: 300px;
+    width: 300px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
