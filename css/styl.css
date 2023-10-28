@@ -1,35 +1,34 @@
 body{
     margin: 0;
     padding: 0;
-    font-family: montserrat, sans-serif;
+    font-family: Arial;
     background: linear-gradient(120deg, #2980b9, #8e44ad);
     height: 100vs;
     overflow: hidden;
 }
+
 img{
     width: 150px;
     height: 150px;
-}
-.center{
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 400px;
-    background: white;
-    border-radius: 10px;
 }
 
 .menu{
     position: absolute;
     background-color: white;
-    width: 75%;
+    color: black;
+    width: 70%;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
     height: 70%;
     border: 1px solid #666666;
     border-radius: 10px;
+}
+
+h3{
+    font-size: large;
+    text-align: center;
+    color: #2691d9;
 }
 
 .menuquiz{
@@ -41,16 +40,17 @@ img{
     height: 70%;
 }
 
-label {
-    float: right;
-}
 
-.pytanie li{
-    background-color: #666666;
+/* CENTER */
+
+.center{
     position: absolute;
-    width: 75%;
-    height: 50%;
-    color: black;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 400px;
+    background: white;
+    border-radius: 10px;
 }
 
 .center h1{
@@ -69,10 +69,16 @@ label {
     background-color: #2980b9;
 }
 
+
 form .txt_field{
     position: relative;
     border-bottom: 2px solid silver;
     margin: 30px 0;
+}
+
+
+label {
+    float: right;
 }
 
 #pytanie{
@@ -86,6 +92,14 @@ form .txt_field{
     margin: auto;
     text-align: center;
     list-style: none;
+}
+
+.pytanie li{
+    background-color: #666666;
+    position: absolute;
+    width: 75%;
+    height: 50%;
+    color: black;
 }
 
 .pytanie{
@@ -105,11 +119,9 @@ form .txt_field{
     font-size: 30px;
 }
 
-
 .choices{
     list-style: none;
 }
-
 
 .choices li{
     background-color: #8e44ad;
@@ -219,11 +231,12 @@ input[type="submit"]:hover{
     text-decoration: underline;
 }
 
-li,a,button{
+/* HEADER */
+
+header li,a,button{
     font-family: montserrat, sans-serif;
     font-weight: 500;
     font-size: 16px;
-    color: #e9f4fb;
     text-decoration: none;
 }
 
@@ -240,9 +253,15 @@ header{
     margin-right: auto;
 }
 
+
 .nav_links{
     list-style: none;
 }
+
+.nav_links a{
+    color: #e9f4fb;
+}
+
 
 .nav_links li{
     display: inline-block;
@@ -257,6 +276,7 @@ header{
     color: #2980b9;
 }
 
+/* BUTTONS */
 
 button {
     margin-left: 20px;
@@ -272,6 +292,8 @@ button:hover{
     background-color: rgba(0,136,169,0);
 }
 
+
+/* FOOTER */
 
 footer{
     position: absolute;

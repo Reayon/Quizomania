@@ -34,11 +34,11 @@ session_start();
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="stylesheet" href="../css/styl.css">
         <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
-    <link rel="icon" type="image/x-icon" href="../src/logoikona.ico">
+    <link rel="icon" type="image/x-icon" href="../src/logo3.png">
         <title>Quizomania</title>
     </head>
     <body>
-	<header>
+		<header>
 			<img class="logo" src="../src/logo3.png" alt="logo">
 		</header>
         <div class="center">
