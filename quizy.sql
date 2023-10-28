@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Paź 26, 2023 at 08:13 PM
+-- Generation Time: Paź 28, 2023 at 08:41 PM
 -- Wersja serwera: 10.4.28-MariaDB
 -- Wersja PHP: 8.2.4
 
@@ -69,7 +69,47 @@ INSERT INTO `odpowiedzi` (`ID_odpowiedzi`, `ID_pytania`, `odp`, `czy_poprawna`) 
 (9, 2, 'W Azji.', 0),
 (10, 2, 'W Europie.', 1),
 (11, 2, 'W Afryce.', 0),
-(12, 2, 'W Ameryce Południowej.', 0);
+(12, 2, 'W Ameryce Południowej.', 0),
+(13, 4, 'Wireless Fidelity', 1),
+(14, 4, 'Wireless Fast Internet', 0),
+(15, 4, 'Wireless Internet Frequency Interface', 0),
+(16, 4, 'World Information for Internet Facilities', 0),
+(17, 5, 'sudo deluser student', 1),
+(18, 5, 'net user student /del', 0),
+(19, 5, 'net userdel student', 0),
+(20, 5, 'user remove student', 0),
+(21, 6, '1410', 0),
+(22, 6, '1815', 1),
+(23, 6, '1821', 0),
+(24, 6, '1000', 0),
+(25, 7, '100 lat', 0),
+(26, 7, '58 dni', 0),
+(27, 7, '116 lat', 1),
+(28, 7, '190 lat', 0),
+(29, 8, '10/4', 0),
+(30, 8, '1/2', 0),
+(31, 8, '3/5', 1),
+(32, 8, '14/24', 0),
+(33, 9, '68', 0),
+(34, 9, '23', 0),
+(35, 9, '14', 0),
+(36, 9, '48', 1),
+(37, 10, 'tętnica', 1),
+(38, 10, 'żyła', 0),
+(39, 10, 'kość', 0),
+(40, 10, 'palec', 0),
+(41, 11, 'DEA', 0),
+(42, 11, 'DNA', 1),
+(43, 11, 'RNA', 0),
+(44, 11, 'DPD', 0),
+(45, 12, 'Real Madryt CF', 0),
+(46, 12, 'Juventus Turyn', 0),
+(47, 12, 'Sporting Lisbona', 0),
+(48, 12, 'Al-Nassr', 1),
+(49, 13, 'Zbigniew Boniek', 0),
+(50, 13, 'Łukasz Piszczek', 0),
+(51, 13, 'Cezary Kulesza', 1),
+(52, 13, 'Cezary Pazura', 0);
 
 -- --------------------------------------------------------
 
@@ -89,7 +129,17 @@ CREATE TABLE `pytania` (
 
 INSERT INTO `pytania` (`ID_pytania`, `ID_kategorii`, `tresc`) VALUES
 (1, 5, 'Gdzie leży państwo Niger?'),
-(2, 5, 'Gdzie leży Polska?');
+(2, 5, 'Gdzie leży Polska?'),
+(4, 1, 'Rozwiń skrót WI-FI?'),
+(5, 1, 'W systemie operacyjnym Ubuntu konto użytkownika student można usunąć za pomocą polecenia?'),
+(6, 2, 'W którym roku Napoleon Bonaparte został po raz pierwszy zesłany na wyspę Św. Heleny?'),
+(7, 2, 'Ile trwała wojna stuletnia?'),
+(8, 3, 'Ułamek 15/25 równa się?'),
+(9, 3, '6*8=?'),
+(10, 4, 'Aorta to największa w ciele człowieka:?'),
+(11, 4, 'Kwas deoksyrybonukleinowy jak inaczej się nazywa?'),
+(12, 6, 'W jakim klubie obecnie gra Cristiano Ronaldo (Stan na 28.10.2023)?'),
+(13, 6, 'Prezesem Polskiego Związku Piłki Nożnej (PZPN) jest (Stan na 28.10.2023)?');
 
 --
 -- Indeksy dla zrzutów tabel
@@ -123,19 +173,19 @@ ALTER TABLE `pytania`
 -- AUTO_INCREMENT for table `kategorie`
 --
 ALTER TABLE `kategorie`
-  MODIFY `ID_kategorii` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `ID_kategorii` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
 -- AUTO_INCREMENT for table `odpowiedzi`
 --
 ALTER TABLE `odpowiedzi`
-  MODIFY `ID_odpowiedzi` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `ID_odpowiedzi` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=53;
 
 --
 -- AUTO_INCREMENT for table `pytania`
 --
 ALTER TABLE `pytania`
-  MODIFY `ID_pytania` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `ID_pytania` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 
 --
 -- Constraints for dumped tables

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Paź 14, 2023 at 08:30 PM
+-- Generation Time: Paź 28, 2023 at 08:40 PM
 -- Wersja serwera: 10.4.28-MariaDB
 -- Wersja PHP: 8.2.4
 
@@ -32,16 +32,40 @@ CREATE TABLE `users` (
   `userid` bigint(20) NOT NULL,
   `username` varchar(100) NOT NULL,
   `password` varchar(100) NOT NULL,
-  `date` timestamp NOT NULL DEFAULT current_timestamp()
+  `date` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
+  `email` varchar(320) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `users`
 --
 
-INSERT INTO `users` (`id`, `userid`, `username`, `password`, `date`) VALUES
-(0, 0, 'Filip', '1234', '2023-10-14 18:17:52'),
-(0, 0, 'Filip', '1234', '2023-10-14 18:18:22');
+INSERT INTO `users` (`id`, `userid`, `username`, `password`, `date`, `email`) VALUES
+(3, 7623883860263612009, 'debil', '1234', '2023-10-28 18:36:57', 'debil@wp.pl'),
+(7, 9223372036854775807, 'Dupson1338', '1337', '2023-10-28 18:40:40', 'DupaJasiu@wiertarka.sa');
+
+--
+-- Indeksy dla zrzutów tabel
+--
+
+--
+-- Indeksy dla tabeli `users`
+--
+ALTER TABLE `users`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `userid` (`userid`),
+  ADD KEY `username` (`username`),
+  ADD KEY `date` (`date`);
+
+--
+-- AUTO_INCREMENT for dumped tables
+--
+
+--
+-- AUTO_INCREMENT for table `users`
+--
+ALTER TABLE `users`
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
