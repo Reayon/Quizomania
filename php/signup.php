@@ -1,46 +1,24 @@
 <?php 
 session_start();
 
-    include("connection.php");
-    include("function.php");
+	include("connection.php");
+	include("function.php");
 
 
-<<<<<<< HEAD
-    if($_SERVER['REQUEST_METHOD'] == "POST")
-    {
-        //something was posted
-        $username = $_POST['username'];
-        $password = $_POST['password'];
-=======
 	if($_SERVER['REQUEST_METHOD'] == "POST")
 	{
 		$username = $_POST['username'];
 		$password = $_POST['password'];
->>>>>>> be23d63f15b6ca59e4c5c8bfdbc9c2473b3c76cc
+		$email = $_POST['email'];
 
-        if(!empty($username) && !empty($password) && !is_numeric($username))
-        {
+		if(!empty($username) && !empty($password) && !is_numeric($username))
+		{
 
-<<<<<<< HEAD
-            //save to database
-            $userid = random_num(20);
-            $query = "insert into users (userid,username,password) values ('$userid','$username','$password')";
-=======
 			$userid = random_num(20);
-			$query = "insert into users (userid,username,password) values ('$userid','$username','$password')";
->>>>>>> be23d63f15b6ca59e4c5c8bfdbc9c2473b3c76cc
+			$query = "insert into users (userid,username,password,email) values ('$userid','$username','$password','$email')";
 
-            mysqli_query($con, $query);
+			mysqli_query($con, $query);
 
-<<<<<<< HEAD
-            header("Location: stronaGlownaLogin.php");
-            die;
-        }else
-        {
-            echo "Please enter some valid information!";
-        }
-    }
-=======
 			header("Location: login.php");
 			die;
 		}else
@@ -48,7 +26,6 @@ session_start();
 			echo "Please enter some valid information!";
 		}
 	}
->>>>>>> be23d63f15b6ca59e4c5c8bfdbc9c2473b3c76cc
 ?>
 <!DOCTYPE html>
 <html lang="pl">
@@ -58,11 +35,14 @@ session_start();
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="stylesheet" href="../css/styl.css">
         <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
-    <link rel="icon" type="image/x-icon" href="../src/logoikona.ico">
+    	<link rel="icon" type="image/x-icon" href="../src/logo3.png">
+		<link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond&family=Poppins:wght@300&display=swap" rel="stylesheet">
         <title>Quizomania</title>
     </head>
     <body>
-	<header>
+		<header>
 			<img class="logo" src="../src/logo3.png" alt="logo">
 		</header>
         <div class="center">
@@ -74,7 +54,12 @@ session_start();
 					<label>Username</label>	
 				</div>
 				<div class="txt_field">
-				<input id="password" type="password" name="password" required>
+				<input id="password" type="email" name="email" required>
+					<span></span>
+					<label class="form-label">E-Mail</label>
+				</div>
+				<div class="txt_field">
+				<input id="password" type="password" name="password" minlength="8" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Hasło musi zawierać przynajmniej: jedną dużą literę, jedną małą literę, jedną liczbę i jeden znak specjalny" required>
 					<span></span>
 					<label class="form-label">Hasło</label>
 				</div>

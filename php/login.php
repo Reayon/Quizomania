@@ -47,12 +47,15 @@ session_start();
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="stylesheet" href="../css/styl.css">
         <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
-    <link rel="icon" type="image/x-icon" href="../src/logoikona.ico">
+    	<link rel="icon" type="image/x-icon" href="../src/logo3.png">
+		<link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond&family=Poppins:wght@300&display=swap" rel="stylesheet">
         <title>Quizomania</title>
     </head>
     <body>
-	<header>
-			<img class="logo" src="../src/logo3.png" alt="logo">
+		<header>
+			<img src="../src/logoquiz.png" class="logo"  alt="logo">
 		</header>
         <div class="center">
             <h1>Login</h1>
