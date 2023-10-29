@@ -5,13 +5,30 @@ session_start();
 	include("function.php");
 
 	$user_data = check_login($con);
-
+    $_SESSION['chuj'];
 ?>
 <?php
 
-// Zapytanie do bazy danych w celu pobrania kategorii
-//$query = "SELECT * FROM pytania WHERE ID_kategorii = $category_id";
-//$result = $conn->query($query);
+$host = "localhost";
+$username = "root";
+$password = "";
+$database = "quizy";
+
+$conn = new mysqli($host, $username, $password, $database);
+
+if ($conn->connect_error) {
+    die("Błąd połączenia z bazą danych: " . $conn->connect_error);
+} 
+
+if (isset($_GET['pytanie'])) {
+    $pytanie_id = $_GET['pytanie'];
+
+    $_SESSION['chuj'] = $pytanie_id;
+}
+
+//$empty = "ALTER TABLE odpowiedzi ADD CONSTRAINT odpowiedzi_limit CHECK (ID_pytania IN (SELECT ID_pytania FROM odpowiedzi GROUP BY ID_pytania HAVING COUNT(*) = 4))";
+//$resem = $conn->query($empty);
+
 ?>
 <!DOCTYPE html>
 <html lang="pl">
@@ -49,7 +66,10 @@ session_start();
                     <thead>
                         <tr>
                             <form action="<?php echo $_SERVER['PHP_SELF'];?>" method="post">
-                                <p>Nazwa kategorii: <input type="text" name="fname"></p><br>
+                                <p>Wpisz treść poprawnej odpowiedzi: <input type="text" name="gname"></p><br>
+                                <p>Wpisz treść złej odpowiedzi: <input type="text" name="hname"></p><br>
+                                <p>Wpisz treść złej odpowiedzi: <input type="text" name="jname"></p><br>
+                                <p>Wpisz treść złej odpowiedzi: <input type="text" name="kname"></p><br>
                                 <p><input type="submit"></p><br>
                             </form>
                         </tr>
@@ -67,41 +87,32 @@ session_start();
                         if ($conn->connect_error) {
                             die("Błąd połączenia z bazą danych: " . $conn->connect_error);
                         } 
-                        if (isset($_GET['category'])) {
-                            $category_id = $_GET['category'];
-                            echo "<td><a style='color: black;' href='addpyt.php?category=$category_id'>Dodaj pytanie</a></td>";
-                            $query = "SELECT * FROM pytania WHERE ID_kategorii = $category_id";
-                            $result = $conn->query($query);
-                            
-                        if ($result->num_rows > 0) {
-                            while ($row = $result->fetch_assoc()) {
-                            $pytanie_id = $row['ID_pytania'];
-                            $pytanie_nazwa = $row['tresc'];
-                            echo "<tr>";
-                            echo "<td><p>$pytanie_nazwa</p></td>";
-                            echo "<td><a style='color: black;' href='editpyt.php?pytanie=$pytanie_id'>Edytuj pytanie</a></td>";
-                            echo "<td><a style='color: black;' href='deletepyt.php?pytanie=$pytanie_id'>Usuń pytanie</a></td>";
-                            echo "</tr>";
-                            }
-                        } else {
-                            echo "Brak dostępnych pytań.";
-                        }
-                        }
-
-                        /*if (isset($_GET['category'])) {
-                            $category_id = $_GET['category'];
+                        
                             if ($_SERVER["REQUEST_METHOD"] == "POST") {
-                                // collect value of input field
-                                $name = $_POST['fname'];
-                                if (empty($name)) {
+                                
+                                $pyt = $_SESSION['chuj'];
+
+                                $aname = $_POST['gname'];
+                                $bname = $_POST['hname'];
+                                $cname = $_POST['jname'];   
+                                $dname = $_POST['kname'];
+                                if (empty($aname || empty($bname) || empty($cname) || empty($dname))) {
                                   echo "Name is empty";
                                 } else {
-                                    echo $name;
-                                  $sql = "INSERT INTO pytania (ID_kategorii, tresc) VALUES ('$category_id', '$name')";
-                                  $result = $conn->query($sql);
+                                  echo $aname;
+                                  echo $bname;
+                                  echo $cname;
+                                  echo $dname;
+                                  $sql = "DELETE FROM odpowiedzi WHERE ID_pytania = $pyt";
+                                  $result5 = $conn->query($sql);
+                                  $sql1 = "INSERT INTO odpowiedzi (ID_pytania, odp, czy_poprawna) VALUES ('$pyt', '$aname', 1), ('$pyt', '$bname', 0), ('$pyt', '$cname', 0), ('$pyt', '$dname', 0)";
+                                  $sql5 = "SET FOREIGN_KEY_CHECKS=0";
+                                  $sql6 = "SET FOREIGN_KEY_CHECKS=1";
+                                  $result5 = $conn->query($sql5);
+                                  $result1 = $conn->query($sql1);
+                                  $result6 = $conn->query($sql6);
+                                    }
                                 }
-                            }
-                        }*/
                         
                         echo "<td><a style='color: black;' href='edytor.php'>Wróć do quizów</a></td>";
                     ?>

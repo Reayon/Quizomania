@@ -5,13 +5,12 @@ session_start();
 	include("function.php");
 
 	$user_data = check_login($con);
-
 ?>
 <?php
 
 // Zapytanie do bazy danych w celu pobrania kategorii
-//$query = "SELECT * FROM pytania WHERE ID_kategorii = $category_id";
-//$result = $conn->query($query);
+$query = "SELECT * FROM pytania";
+$result = $conn->query($query);
 ?>
 <!DOCTYPE html>
 <html lang="pl">
@@ -48,10 +47,8 @@ session_start();
                 <table class="table">
                     <thead>
                         <tr>
-                            <form action="<?php echo $_SERVER['PHP_SELF'];?>" method="post">
-                                <p>Nazwa kategorii: <input type="text" name="fname"></p><br>
-                                <p><input type="submit"></p><br>
-                            </form>
+                            <th scope="col">Pomyślnie usunięto</th>
+                            <th scope="col"></th>
                         </tr>
                     </thead>
                     <tbody>
@@ -67,42 +64,19 @@ session_start();
                         if ($conn->connect_error) {
                             die("Błąd połączenia z bazą danych: " . $conn->connect_error);
                         } 
-                        if (isset($_GET['category'])) {
-                            $category_id = $_GET['category'];
-                            echo "<td><a style='color: black;' href='addpyt.php?category=$category_id'>Dodaj pytanie</a></td>";
-                            $query = "SELECT * FROM pytania WHERE ID_kategorii = $category_id";
-                            $result = $conn->query($query);
-                            
-                        if ($result->num_rows > 0) {
-                            while ($row = $result->fetch_assoc()) {
-                            $pytanie_id = $row['ID_pytania'];
-                            $pytanie_nazwa = $row['tresc'];
-                            echo "<tr>";
-                            echo "<td><p>$pytanie_nazwa</p></td>";
-                            echo "<td><a style='color: black;' href='editpyt.php?pytanie=$pytanie_id'>Edytuj pytanie</a></td>";
-                            echo "<td><a style='color: black;' href='deletepyt.php?pytanie=$pytanie_id'>Usuń pytanie</a></td>";
-                            echo "</tr>";
-                            }
-                        } else {
-                            echo "Brak dostępnych pytań.";
-                        }
-                        }
 
-                        /*if (isset($_GET['category'])) {
-                            $category_id = $_GET['category'];
-                            if ($_SERVER["REQUEST_METHOD"] == "POST") {
-                                // collect value of input field
-                                $name = $_POST['fname'];
-                                if (empty($name)) {
-                                  echo "Name is empty";
-                                } else {
-                                    echo $name;
-                                  $sql = "INSERT INTO pytania (ID_kategorii, tresc) VALUES ('$category_id', '$name')";
-                                  $result = $conn->query($sql);
-                                }
-                            }
-                        }*/
+                        if (isset($_GET['pytanie'])) {
+                            $pytanie_id = $_GET['pytanie'];
                         
+                            $query = "DELETE FROM odpowiedzi WHERE ID_pytania = $pytanie_id";
+
+                            $query1 = "DELETE FROM pytania WHERE ID_pytania = $pytanie_id";
+
+                            $result = $conn->query($query);
+
+                            $result1 = $conn->query($query1);
+
+                        }
                         echo "<td><a style='color: black;' href='edytor.php'>Wróć do quizów</a></td>";
                     ?>
                     </table>

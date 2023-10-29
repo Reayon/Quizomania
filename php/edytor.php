@@ -54,13 +54,15 @@ $result = $conn->query($query);
                     <tbody>
                     <?php
                         // Wyświetlenie dostępnych kategorii
+                        echo "<td><a style='color: black;' href='add.php'>Dodaj quiz</a></td>";
                         if ($result->num_rows > 0) {
                             while ($row = $result->fetch_assoc()) {
                             $category_id = $row['ID_kategorii'];
                             $category_name = $row['nazwa'];
                             echo "<tr>";
                             echo "<td><p>$category_name</p></td>";
-                            echo "<td><a style='color: black;' href='quiz.php?category=$category_id'>Rozpocznij quiz</a></td>";
+                            echo "<td><a style='color: black;' href='edit.php?category=$category_id'>Edytuj kategorie</a></td>";
+                            echo "<td><a style='color: black;' href='delete.php?category=$category_id'>Usuń kategorie</a></td>";
                             echo "</tr>";
                             }
                         } else {
