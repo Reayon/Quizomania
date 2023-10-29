@@ -29,6 +29,7 @@ session_start();
 				</nav>
 					<a class="cta" href="#"><button>Kontakt</button></a>
 		</header>
+<<<<<<< HEAD
         <div class="menuquiz">
             <div style="background: linear-gradient(120deg, #2980b9, #8e44ad)">
             <div id="pytanie">
@@ -46,6 +47,12 @@ session_start();
                     } 
 
 // Inicjowanie sesji na początku quizu
+=======
+    <div style="height:50%px;" class="menu">
+        <div class="tabela">
+    <?php
+    // Inicjowanie sesji na początku quizu
+>>>>>>> 0a3808b643d217b4a39fee673a3546afab1c5345
 if (!isset($_SESSION['current_question'])) {
     $_SESSION['current_question'] = 0;
 }

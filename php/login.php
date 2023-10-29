@@ -63,7 +63,7 @@ session_start();
 					<label>Username</label>	
 				</div>
 				<div class="txt_field">
-					<input type="password" name="password" required>
+					<input type="password" name="password" minlength="8" required>
 					<span></span>
 					<label>Password</label>	
 				</div>
