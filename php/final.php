@@ -4,6 +4,7 @@ include("function.php");
 
 $user_data = check_login($con);
 
+
 ?>
 
 <!DOCTYPE html>
@@ -20,6 +21,46 @@ $user_data = check_login($con);
         <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond&family=Poppins:wght@300&display=swap" rel="stylesheet">
         <title>Quizomania</title>
     </head>
+
+    <style>
+        .wynik{
+            width: 75%;
+            height: 75%;
+            margin: auto;
+            display: block;
+            text-align: center;
+        }
+
+        .wynik h2{ 
+            color: black;
+            text-align: center;
+            margin-top: 190px;
+        }
+
+        .wynik button{
+            margin-left: 5px;
+            padding: 9px 25px;
+            background-color: rgba(0,136,169,1);
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.3s ease 0s;
+        }
+
+        button:hover{
+            background-color: rgba(0,136,169,0);
+        }
+
+        .wynik a:visited{
+            text-decoration: none;
+        }
+
+        .wynik a{
+            text-decoration: none;
+        }
+
+    </style>
+
     <body>
         <header style="height: 125px">
 			<img class="logo" src="../src/logoquiz.png" alt="logo">
@@ -33,14 +74,15 @@ $user_data = check_login($con);
 					<a class="cta" href="../php/logout.php"><button>Wyloguj sie</button></a>
 		</header>
         <div style='height: 600px;' class="menu">
+            <div class="wynik">
                 <h2>Test zakonczono!</h2>
-            <p>Ukonczono test z wybranej kategorii</p>
-            <p>Twój wynik koncowy wynosi: <?php echo $_SESSION['score']?></p>
+            <p>Ukończono test z: <?php echo $_SESSION['kategorie'] ?></p>
+            <p>Twój wynik końcowy wynosi: <?php echo $_SESSION['score'] ."/".$_SESSION['total_questions']?></p>
                 <?php 
                     $_SESSION['score'] = 0;
                 ?> 
-            <a href="stronaGlowna.php" class="start">Spróbuj ponownie</a>
-
+            <button><a href="stronaGlowna.php" class="start">Spróbuj ponownie</a></button>
+            </div>
 		</div>
                 <footer>
                     <div class="footer-bottom">

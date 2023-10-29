@@ -24,16 +24,11 @@ session_start();
 
     <style>
 
-
         .tabela{
             width: 100%;
             height: auto;
             text-align: center;
             background: white;
-        }
-        
-        h2{
-            text-align: center;
         }
 
         .content-table{
@@ -85,9 +80,21 @@ session_start();
             font-weight: bold;
         }
 
+        .choices li{
+            background-color: #666666;
+        }
+
+        .choices li:hover{
+            background-color: #b3b3b3;
+            transition: 0.5s;
+        }
+
+
         input[type="submit"]{
             width: 50%;
             height: 50px;
+            margin-left: 40px;
+            font-family: 'Poppins', sans-serif;
             border: 1px solid;
             background: #2691d9;
             font-size: 18px;
@@ -101,6 +108,7 @@ session_start();
             border-color: #2691d9;
             transition: .5s;
         }
+
     </style>
 
 
@@ -116,7 +124,7 @@ session_start();
 				</nav>
 					<a class="cta" href="../php/logout.php"><button>Wyloguj sie</button></a>
 		</header>
-    <div style="height:50%px;" class="menu">
+    <div style="height:50%;" class="menu">
         <div class="tabela">
         <?php
 
@@ -128,6 +136,7 @@ session_start();
     }
 
     $answer_result = "";  // Przechowuje wynik odpowiedzi użytkownika.
+
 
     // Sprawdzamy, czy kategoria została przekazana poprzez parametr GET.
     if (isset($_GET['category'])) {
@@ -170,6 +179,7 @@ session_start();
         $category_result = $conn->query($category_query);
         if ($category_result->num_rows > 0) {
             $category_name = $category_result->fetch_assoc()['nazwa'];
+            $_SESSION['kategorie'] = $category_name;
         }
 
         // Wyswietlanie wyniku
@@ -179,7 +189,6 @@ session_start();
             echo "<h1>BLAD KATEGORII</h1>";
         }
 
-        echo "Pytanie numer: " . ($_SESSION['current_question'] + 1);
 
     // Sprawdzamy, czy metoda żądania to POST (czyli czy formularz został przesłany).
     if ($_SERVER['REQUEST_METHOD'] === 'POST') {
@@ -215,6 +224,8 @@ session_start();
         $count_query = "SELECT COUNT(*) AS total FROM pytania WHERE id_kategorii = $category_id";
         $count_result = $conn->query($count_query);
         $total_questions = $count_result->fetch_assoc()['total'];
+        $_SESSION['total_questions'] = $total_questions;
+        
 
         // Jeśli tak, przenosimy użytkownika na stronę wyników. W przeciwnym przypadku odświeżamy stronę.
             if ($_SESSION['current_question'] >= $total_questions) {
@@ -234,9 +245,12 @@ session_start();
             $_SESSION['current_question'] = 0;  // Zresetuj licznik pytania
         }
 
+
+        echo "<h2>Pytanie: " . ($_SESSION['current_question'] + 1)."/".$total_questions."</h2>";
+
         // Wyświetlamy pytanie i odpowiedzi.
         foreach ($questions as $question_id => $question_data) {
-            echo "<p><strong>Pytanie:</strong> " . $question_data['pytanie'] . "</p>";
+            echo "<p>" . $question_data['pytanie'] . "</p>";
             echo "<form method='post'>";
             echo "<ul class='choices'>";
             foreach ($question_data['odpowiedzi'] as $answer) {

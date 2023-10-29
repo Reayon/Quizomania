@@ -25,6 +25,45 @@ session_start();
     <link rel="icon" type="image/x-icon" href="../src/logo3.ico">
         <title>Quizomania</title>
     </head>
+        <style>
+        .crud{
+            border-collapse: collapse;
+            margin: 25px, 0;
+            font-size: 0.9em;
+            min-width: 400px;
+            border-radius: 5px 5px 0 0;
+            overflow: hidden;
+        }
+
+        .crud thead tr{
+            background-color: #b3b3b3;
+            height: 50px;
+            color: black;
+            text-align: center;
+            font-weight: bold;
+        }
+
+        .crud th{
+
+        }
+
+        .crud td{
+            padding: 12px, 15px;
+        }
+
+        .crud tbody tr{
+            border-bottom: 1px solid black;
+        }
+
+        .crud tbody tr:nth-of-type(even){
+            background-color: f3f3f3;
+        }
+
+        .crud tbody tr:last-of-type{
+            border-bottom: 1px solid #737373;
+        }
+
+        </style>
     <body>
     <header>
 			<img class="logo" src="../src/logo3.png" alt="logo">
@@ -45,7 +84,7 @@ session_start();
                     </div>
                 </form>--->
                 <h2>Lista Quizów</h2>
-                <table class="table">
+                <table class="crud">
                     <thead>
                         <tr>
                             <form action="<?php echo $_SERVER['PHP_SELF'];?>" method="post">

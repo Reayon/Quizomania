@@ -28,6 +28,9 @@ function filterTable($query)
     $filter_Result = mysqli_query($connect, $query);
     return $filter_Result;
 }
+
+$_SESSION['current_question'] = 0;
+
 ?>
 <!DOCTYPE html>
 <html lang="pl">
@@ -39,17 +42,34 @@ function filterTable($query)
         <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
         <link rel="icon" type="image/x-icon" href="../src/logo3.png">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond&family=Poppins:wght@300&display=swap" rel="stylesheet">
         <title>Quizomania</title>
     </head>
+
+    <script>
+        // Opcjonalne: Jeśli chcesz umożliwić dynamiczne dostosowywanie wysokości tabeli na podstawie zawartości
+        window.addEventListener('DOMContentLoaded', () => {
+            const tableContainer = document.querySelector('.table-container');
+            const table = document.querySelector('table');
+
+            // Dostosuj maksymalną wysokość kontenera tabeli w zależności od zawartości
+            tableContainer.style.maxHeight = (window.innerHeight - tableContainer.getBoundingClientRect().top) + 'px';
+        });
+    </script>
+
+
     <style>
 
         .tabela{
             width: 100%;
-            height: auto;
             display: flex;
             justify-content: center;
             text-align: center;
             background: white;
+            overflow-y: scroll;
+            max-height: 520px;
         }
 
         h2{
@@ -69,7 +89,9 @@ function filterTable($query)
 
         .content-table a{
             color: black;
+            font-family: 'Poppins', sans-serif;
             font-size: 20px;
+            font-weight: 800;
         }
 
         .content-table a:hover{
@@ -96,8 +118,10 @@ function filterTable($query)
         {
             color: black;
             width: 100%;
-            font-size: 25px;
+            font-size: 15px;
             background-color: #2980b9;
+            font-family: 'Poppins', sans-serif;
+            
         }
 
         .content-table tbody td{
@@ -108,7 +132,13 @@ function filterTable($query)
             font-size: 20px;
             padding-bottom: 20px;
             font-weight: bold;
+            color: red;
         }
+
+        .content-table tbody td{
+            color: white;
+        }
+
         input[type="submit"]{
             width: 40%;
             height: 50px;
@@ -126,8 +156,13 @@ function filterTable($query)
             border-color: #2691d9;
             transition: .5s;
         }
+    
+        .txt_field{
+            font-family: 'Poppins', sans-serif;
+        }
+
         .searchbar{
-            width: 100%;
+            width: 300px;
             height: 10px;
             background: rgba(255,255,0,0.2);
             display: flex;
@@ -152,12 +187,13 @@ function filterTable($query)
 
         .searchbar i {
            color: white;
-           margin-right: 30px;
+           display: flex;
+           justify-content: center;
         }
 
         .searchbar button[type="submit"]{
-            border-radius: 20px;
-            height: 40px;
+            border-radius: 30px;
+            height: 50px;
             width: 30px;
             background: #58629b;
             cursor: pointer;
@@ -172,15 +208,17 @@ function filterTable($query)
 
         .search h2{
             margin-right: 50px;
+            margin-left: 75px;
         }
 
         .searchbar input img[type="submit"]{
             width: 5px;
             height: 5px;
         }
+        
     </style>
     <body>
-        <header style="height: 125px">
+        <header style="height: 100px">
 			<img class="logo" src="../src/logoquiz.png" alt="logo">
 				<nav>
 					<ul class="nav_links">
@@ -192,15 +230,17 @@ function filterTable($query)
 				</nav>
 				<a class="cta" href="../php/logout.php"><button>Wyloguj sie</button></a>
 		</header>
-            <div style='height: 600px;' class="menu">
+            <div class="menu">
+            <br>
             <div class="search">
-                <h2>Lista Quizów</h2>
+                <h2>Lista Quizów:</h2><br>
                 <div class="txt_field">
                     <form action="stronaGlowna.php" method="post" class="searchbar">
-                    <input type="text" class="form-control" name="valueToSearch" placeholder="Wyszukaj swoją kategorie: "><br><br>
+                    <input style="font-family: 'Poppins', sans-serif;" type="text" class="form-control" name="valueToSearch" placeholder="Wyszukaj swoją kategorie: "><br><br>
                     <button type="submit" value="" name="search"><i class="bi bi-search"></i></button>
                 </div>
                 </div>
+                <br>
                 <div class="tabela">
                     <table class="content-table">
                         <thead>

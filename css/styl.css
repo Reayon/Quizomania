@@ -1,8 +1,10 @@
 body{
     margin: 0;
     padding: 0;
-    font-family: Arial;
+    font-family: 'Poppins', sans-serif;
     background: linear-gradient(120deg, #2980b9, #8e44ad);
+    background-repeat: no-repeat;
+    background-attachment: fixed;
     height: 100vs;
     overflow: hidden;
 }
@@ -13,6 +15,7 @@ img{
 }
 
 .menu{
+    font-family: 'Poppins', sans-serif;
     position: absolute;
     background-color: white;
     color: black;
@@ -119,6 +122,22 @@ label {
     font-size: 30px;
 }
 
+/* TABELA - quiz.php */
+
+.tabela p{
+    font-weight: bold;
+    font-size: 20px;
+    margin-bottom: 30px;
+}
+
+.tabela h1{
+    color: black;
+    margin-top: 50px;
+    padding-bottom: 20px;
+}
+
+/* CHOICES */
+
 .choices{
     list-style: none;
 }
@@ -136,9 +155,24 @@ label {
     cursor: pointer;
 }
 
+.tabela li{
+    background-color: #666666;
+    display: flex;
+    box-sizing: inherit;
+    padding: 10px, 10px, 10px, 50px;
+    text-align: center;
+    font-size: 18px;
+    width: 50%;
+    height: 50%;
+    transform: translate(50%, -50%);
+    cursor: pointer;
+}
+
 #pytanie h1{
     text-size-adjust: 20px;
 }
+
+/* TXT_FIELD */
 
 .txt_field input{
     width: 100%;
@@ -215,6 +249,8 @@ input[type="submit"]:hover{
     color: black;
 }
 
+/* SIGN UP */
+
 .signup_link{
     margin: 30px 0;
     text-align: center;
@@ -234,7 +270,7 @@ input[type="submit"]:hover{
 /* HEADER */
 
 header li,a,button{
-    font-family: montserrat, sans-serif;
+    font-family: 'Poppins', sans-serif;
     font-weight: 500;
     font-size: 16px;
     text-decoration: none;
@@ -245,7 +281,6 @@ header{
     justify-content: space-between;
     align-items: center;
     padding: 30px 10%;
-
 }
 
 .logo{
@@ -302,7 +337,7 @@ footer{
     right: 0;
     height: auto;
     width: 100vw;
-    font-family: montserrat, sans-serif;
+    font-family: 'Poppins', sans-serif;
     color: white;
 }
 
@@ -330,7 +365,6 @@ footer{
 }
 
 .footer-bottom{
-    background: linear-gradient(120deg, #2980b9, #8e44ad);
     width: 100vw;
     padding: 20px 0;
     text-align: center;

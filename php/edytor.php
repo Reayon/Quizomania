@@ -19,105 +19,134 @@ $result = $conn->query($query);
         <meta name="description" content="www.quizomania.pl">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="stylesheet" href="../css/styl.css">
-        <link rel="stylesheet" href="../css/buttons.css">
         <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
-    <link rel="icon" type="image/x-icon" href="../src/logo3.ico">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond&family=Poppins:wght@300&display=swap" rel="stylesheet">
+        <link rel="icon" type="image/x-icon" href="../src/logo3.ico">
         <title>Quizomania</title>
     </head>
+
+    <script>
+        // Opcjonalne: Jeśli chcesz umożliwić dynamiczne dostosowywanie wysokości tabeli na podstawie zawartości
+        window.addEventListener('DOMContentLoaded', () => {
+            const tableContainer = document.querySelector('.table-container');
+            const table = document.querySelector('table');
+
+            // Dostosuj maksymalną wysokość kontenera tabeli w zależności od zawartości
+            tableContainer.style.maxHeight = (window.innerHeight - tableContainer.getBoundingClientRect().top) + 'px';
+        });
+    </script>
+
     <style>
+
+        /* MENU */
+
+        .menu{
+            display: inline-block;
+            text-align: center;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        .menu p{
+            font-weight: 500px;
+        }
+
+        .title{
+            border-bottom: 1px solid black;
+        }
+
+        /* TABELA */
+
         .tabela{
-            width: 100%;
-            height: auto;
-            display: flex;
-            justify-content: center;
             text-align: center;
-            background: white;
-        }
-
-        h2{
-            text-align: center;
-        }
-
-        .content-table{
             width: 50%;
-            height: auto;
+            float: right;
+            overflow-y: scroll;
+            max-height: 520px;
+        }
+    
+        .tabela p{
+            font-weight: 50px;
+        }
+
+
+        /* CRUD */
+
+        .crud{
+            border-collapse: collapse;
+            margin: 25px, 0;
+            font-size: 0.9em;
+            min-width: 400px;
+            border-radius: 5px 5px 0 0;
             overflow: hidden;
-            font-size: 25px;
-            text-decoration: none;
-            align-items: center;
-            border: 1px solid #666666;
-            padding: 10px;
+            text-align: center;
+            margin-left: 125px;
         }
 
-        .content-table a{
-            color: black;
-            font-family: 'Poppins', sans-serif;
-            font-size: 20px;
-            font-weight: 800;
-        }
-
-        .content-table a:hover{
-            transition: .5s;
-            border-color: #2691d9;
-        }
-
-        .content-table a:visited{
-            transition: .5s;
-            border-color: #2691d9;
-        }
-
-        .content-table thead th{
-            background: #2691d9;
-            width: 100%;
+        .crud h2{
             height: 50px;
-            color: white;
-            font-size: 25px;
-            text-decoration: none;
             text-align: center;
         }
 
-        .content-table tbody
-        {
+        .crud thead tr{
+            background-color: #b3b3b3;
+            height: 50px;
             color: black;
-            width: 100%;
-            font-size: 15px;
-            background-color: #2980b9;
-            font-family: 'Poppins', sans-serif;
-        }
-
-        .content-table tbody td{
-            background: linear-gradient(120deg, #2980b9, #8e44ad);
-            width: 100%;
             text-align: center;
-            font-size: 20px;
-            padding-bottom: 10px;
             font-weight: bold;
         }
 
-        .content-table tbody td{
-            color: white;
+        .crud th{
+            font-size: 20px;
         }
 
-        input[type="submit"]{
-            width: 40%;
+        .crud td{
+            padding: 12px, 15px;
+        }
+
+        .crud tbody tr{
+            border-bottom: 1px solid black;
+        }
+
+        .crud tbody tr:nth-of-type(even){
+            background-color: f3f3f3;
+        }
+
+        .crud tbody tr:last-of-type{
+            border-bottom: 1px solid #737373;
+        }
+
+        /* DODAJ QUIZ */
+
+        .dodajquiz{
+            display: inline-block;
+            float: left;
+            width: 50%;
+            height: auto;
+        }
+
+        .dodajquiz button{
+            width: 300px;
             height: 50px;
             border: 1px solid;
             background: #2691d9;
             border-radius: 25px;
-            font-size: 18px;
-            color: #e9f4fb;
-            font-weight: 700;
+            margin-left: 5px;
             outline: none;
             cursor: pointer;
         }
 
-        input[type="submit"]:hover{
+        .dodajquiz button:hover{
             border-color: #2691d9;
             transition: .5s;
         }
+
+
     </style>
+
     <body>
-        <header>
+        <header style="height: 100px">
 			<img class="logo" src="../src/logo3.png" alt="logo">
 				<nav>
 					<ul class="nav_links">
@@ -129,11 +158,20 @@ $result = $conn->query($query);
 				</nav>
 				<a class="cta" href="../php/logout.php"><button>Wyloguj sie</button></a>
 	    </header>
-        <div class="menu">
-            <h2>Lista Quizów</h2>
-            <button><a style='color: black;' href='add.php'>Dodaj quiz</a></button>
+        <div style="height: 720px" class="menu">
+        <div class="title">
+            <h2>EDYTOR QUIZÓW</h2>
+        </div>
+            <div class="dodajquiz">
+                <h2>Kreator quizów:</h2>
+                <p>Gotów na tworzenie ciekawych quizów?</p> 
+                <p>Zacznij teraz!</p>
+                <br><br>
+            <button><a style='color: black;' href='add.php'>Zaczynamy</a></button>
+            </div>
+            <h2> Lista już dodanych quizów: </h2>
             <div class="tabela">
-                <table class="content-table">
+                <table class="crud">
                     <thead>
                         <tr>
                             <th scope="col">Nazwa</th>
@@ -159,8 +197,8 @@ $result = $conn->query($query);
                         }
                     ?>
                 </table>
+                </div>
             </div>
-        </div>
         <footer>
             <div class="footer-bottom">
 				<h2>Quizomania</h2>
