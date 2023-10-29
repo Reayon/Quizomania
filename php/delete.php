@@ -70,6 +70,10 @@ $result = $conn->query($query);
                         
                             $query = "DELETE FROM kategorie WHERE ID_kategorii = $category_id";
 
+                            $query1 = "DELETE FROM pytania WHERE ID_kategorii = $category_id";
+
+                            $result1 = $conn->query($query1);
+
                             $result = $conn->query($query);
 
                         }

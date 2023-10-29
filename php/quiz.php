@@ -17,148 +17,35 @@ session_start();
     <link rel="icon" type="image/x-icon" href="../src/logo3.ico">
         <title>Quizomania</title>
     </head>
-
-    <style>
-
-        .tabela{
-            width: 100%;
-            height: auto;
-            text-align: center;
-            background: white;
-        }
-        
-
-        h2{
-            text-align: center;
-        }
-
-        .content-table{
-            width: 50%;
-            height: auto;
-            overflow: hidden;
-            font-size: 25px;
-            text-decoration: none;
-            align-items: center;
-            border: 1px solid #666666;
-            padding: 10px;
-        }
-
-        .content-table a{
-            color: black;
-        }
-
-        .content-table a:hover{
-            border-color: #2691d9;
-            transition: .5s;
-        }
-
-        .content-table thead th{
-            background: #2691d9;
-            width: 100%;
-            height: 50px;
-            color: white;
-            font-size: 25px;
-            text-decoration: none;
-            text-align: center;
-        }
-
-        .content-table tbody
-        {
-            color: black;
-            width: 100%;
-            font-size: 25px;
-            background-color: #2980b9;
-        }
-
-        .content-table tbody td{
-            display: block;
-            background: linear-gradient(120deg, #2980b9, #8e44ad);
-            width: 100%;
-            text-align: center;
-            font-size: 20px;
-            padding-bottom: 20px;
-            font-weight: bold;
-        }
-
-        input[type="submit"]{
-            width: 50%;
-            height: 50px;
-            border: 1px solid;
-            background: #2691d9;
-            font-size: 18px;
-            color: #e9f4fb;
-            font-weight: 700;
-            outline: none;
-            cursor: pointer;
-        }
-
-        input[type="submit"]:hover{
-            border-color: #2691d9;
-            transition: .5s;
-        }
-    </style>
-
-
     <body>
-        <header style="height: 100px">
-			<img class="logo" src="../src/logoquiz.png" alt="logo">
+    <header>
+			<img class="logo" src="../src/logo3.png" alt="logo">
 				<nav>
 					<ul class="nav_links">
-							<li><a href="../php/stronaGlowna.php">Strona główna</a></li>
+							<li><a href="../php/stronaGlowna.php" >Strona główna</a></li>
 							<li><a href="#" >Nasze quizy</a></li>
 							<li><a href="#" >O nas</a></li>
 					</ul>
 				</nav>
-					<a class="cta" href="../php/logout.php"><button>Wyloguj sie</button></a>
+					<a class="cta" href="#"><button>Kontakt</button></a>
 		</header>
-    <div style="height:50%px;" class="menu">
-        <div class="tabela">
-        <?php
+        <div class="menuquiz">
+            <div style="background: linear-gradient(120deg, #2980b9, #8e44ad)">
+            <div id="pytanie">
+                <?php
+                    // Połączenie z bazą danych
+                     $host = "localhost";
+                    $username = "root";
+                    $password = "";
+                    $database = "quizy";
+    
+                    $conn = new mysqli($host, $username, $password, $database);
+    
+                    if ($conn->connect_error) {
+                        die("Błąd połączenia z bazą danych: " . $conn->connect_error);
+                    } 
 
 // Inicjowanie sesji na początku quizu
-if (!isset($_SESSION['current_question'])) {
-    $_SESSION['current_question'] = 0;
-}
-
-// Zainicjowanie zmiennej do przechowywania informacji o poprawności odpowiedzi
-$answer_result = "";
-
-// Sprawdzenie, czy została przekazana kategoria
-if (isset($_GET['category'])) {
-    $category_id = $_GET['category'];
-
-    // Pobranie wszystkich pytań i odpowiedzi dla wybranej kategorii
-    $query = "SELECT pytania.id_pytania, pytania.tresc, odpowiedzi.id_odpowiedzi, odpowiedzi.odp, odpowiedzi.czy_poprawna
-            FROM pytania
-            JOIN odpowiedzi ON pytania.id_pytania = odpowiedzi.id_pytania
-            WHERE pytania.id_kategorii = $category_id
-            ORDER BY pytania.id_pytania, RAND()";
-    
-
-    
-    $result = $conn->query($query);
-    $questions = array();
-
-    if ($result->num_rows > 0) {
-        while ($row = $result->fetch_assoc()) {
-            $question_id = $row['id_pytania'];
-            if (!isset($questions[$question_id])) {
-                $questions[$question_id] = array(
-                    'pytanie' => $row['tresc'],
-                    'odpowiedzi' => array()
-                );
-            }
-            $questions[$question_id]['odpowiedzi'][] = array(
-                'id' => $row['id_odpowiedzi'],
-                'odpowiedz' => $row['odp'],
-                'czy_poprawna' => $row['czy_poprawna']
-            );
-        }
-    }
-
-    ?>
-    <?php
-    // Inicjowanie sesji na początku quizu
 if (!isset($_SESSION['current_question'])) {
     $_SESSION['current_question'] = 0;
 }
@@ -249,15 +136,15 @@ if (isset($_GET['category'])) {
 } else {
     echo "Nie wybrano kategorii.";
 }
-}
                 ?>
-        </div>
             </div>
-                <footer>
-                    <div class="footer-bottom">
-                        <h2>Quizomania</h2>
-                            Filip B, Dawid C, Piotr K <br> &copy; Wszelkie prawa zastrzeżone.
                     </div>
-                </footer>
+		        </div>
+            <footer>
+            	<div class="footer-bottom">
+					<h2>Quizomania</h2>
+						Filip B, Dawid C, Piotr K <br> &copy; Wszelkie prawa zastrzeżone.
+				</div>
+			</footer>
     </body>
 </html>
