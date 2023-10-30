@@ -55,7 +55,7 @@ session_start();
     </head>
     <body>
 		<header>
-			<img src="../src/logoquiz.png" class="logo"  alt="logo">
+			<img src="../src/logo3.png" class="logo"  alt="logo">
 		</header>
         <div class="center">
             <h1>Login</h1>

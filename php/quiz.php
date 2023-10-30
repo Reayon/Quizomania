@@ -14,11 +14,11 @@ session_start();
         <meta name="description" content="www.quizomania.pl">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="stylesheet" href="../css/styl.css">
-        <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
-        <link rel="icon" type="image/x-icon" href="../src/logo3.ico">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond&family=Poppins:wght@300&display=swap" rel="stylesheet">
+        <link rel="icon" type="image/x-icon" href="../src/logo3.png">
         <title>Quizomania</title>
     </head>
 
@@ -106,12 +106,11 @@ session_start();
 
     <body>
         <header style="height: 100px">
-			<img class="logo" src="../src/logoquiz.png" alt="logo">
+            <img class="logo" src="../src/logo3.png" alt="logo">
 				<nav>
 					<ul class="nav_links">
 							<li><a href="../php/stronaGlowna.php">Strona główna</a></li>
-							<li><a href="#" >Nasze quizy</a></li>
-							<li><a href="#" >O nas</a></li>
+							<li><a href="onas.php" >O nas</a></li>
 					</ul>
 				</nav>
 					<a class="cta" href="../php/logout.php"><button>Wyloguj sie</button></a>
@@ -170,6 +169,7 @@ session_start();
         $category_result = $conn->query($category_query);
         if ($category_result->num_rows > 0) {
             $category_name = $category_result->fetch_assoc()['nazwa'];
+            $_SESSION['kategorie'] = $category_name;
         }
 
         // Wyswietlanie wyniku
@@ -179,7 +179,6 @@ session_start();
             echo "<h1>BLAD KATEGORII</h1>";
         }
 
-        echo "Pytanie numer: " . ($_SESSION['current_question'] + 1);
 
     // Sprawdzamy, czy metoda żądania to POST (czyli czy formularz został przesłany).
     if ($_SERVER['REQUEST_METHOD'] === 'POST') {
@@ -215,6 +214,7 @@ session_start();
         $count_query = "SELECT COUNT(*) AS total FROM pytania WHERE id_kategorii = $category_id";
         $count_result = $conn->query($count_query);
         $total_questions = $count_result->fetch_assoc()['total'];
+        
 
         // Jeśli tak, przenosimy użytkownika na stronę wyników. W przeciwnym przypadku odświeżamy stronę.
             if ($_SESSION['current_question'] >= $total_questions) {
@@ -234,9 +234,11 @@ session_start();
             $_SESSION['current_question'] = 0;  // Zresetuj licznik pytania
         }
 
+        echo "<h2>Pytanie: " . ($_SESSION['current_question'] + 1)."/".$total_questions."</h2>";
+
         // Wyświetlamy pytanie i odpowiedzi.
         foreach ($questions as $question_id => $question_data) {
-            echo "<p><strong>Pytanie:</strong> " . $question_data['pytanie'] . "</p>";
+            echo "<p>" . $question_data['pytanie'] . "</p>";
             echo "<form method='post'>";
             echo "<ul class='choices'>";
             foreach ($question_data['odpowiedzi'] as $answer) {
@@ -251,7 +253,6 @@ session_start();
     }
 
     ?>
-
         </div>
             </div>
                 <footer>
