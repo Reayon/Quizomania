@@ -5,7 +5,7 @@ session_start();
 	include("function.php");
 
 	$user_data = check_login($con);
-    $_SESSION['chuj'];
+    $_SESSION['sesja'];
 ?>
 <?php
 
@@ -23,7 +23,7 @@ if ($conn->connect_error) {
 if (isset($_GET['pytanie'])) {
     $pytanie_id = $_GET['pytanie'];
 
-    $_SESSION['chuj'] = $pytanie_id;
+    $_SESSION['sesja'] = $pytanie_id;
 }
 
 //$empty = "ALTER TABLE odpowiedzi ADD CONSTRAINT odpowiedzi_limit CHECK (ID_pytania IN (SELECT ID_pytania FROM odpowiedzi GROUP BY ID_pytania HAVING COUNT(*) = 4))";
@@ -182,7 +182,7 @@ if (isset($_GET['pytanie'])) {
                         
                             if ($_SERVER["REQUEST_METHOD"] == "POST") {
                                 
-                                $pyt = $_SESSION['chuj'];
+                                $pyt = $_SESSION['sesja'];
 
                                 $aname = $_POST['gname'];
                                 $bname = $_POST['hname'];

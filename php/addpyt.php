@@ -5,7 +5,7 @@ session_start();
 	include("function.php");
 
 	$user_data = check_login($con);
-    $_SESSION['chuj'];
+    $_SESSION['sesja'];
 ?>
 <?php
 
@@ -23,7 +23,7 @@ if ($conn->connect_error) {
 if (isset($_GET['category'])) {
     $category_i = $_GET['category'];
 
-    $_SESSION['chuj'] = $category_i;
+    $_SESSION['sesja'] = $category_i;
 }
 /*if (isset($_GET['category'])) {
     $category_i = $_GET['category'];
@@ -194,7 +194,7 @@ $result = $conn->query($query);
                         
                         if ($_SERVER["REQUEST_METHOD"] == "POST") {
                             // collect value of input field
-                            $chuj = $_SESSION['chuj'];
+                            $sesja = $_SESSION['sesja'];
                             $name = $_POST['fname'];
                             if (empty($name)) {
                                 echo "<p style=color:red>Nazwa twojego pytania jest pusta</p>";
@@ -204,7 +204,7 @@ $result = $conn->query($query);
                                 echo "<p>Twoje dodane pytanie to: ". $name."</p>";
                                 echo "</tr>";
                               $sql1 = "SET FOREIGN_KEY_CHECKS=0";
-                              $sql2 = "INSERT INTO pytania (ID_kategorii, tresc) VALUES ('$chuj', '$name')";
+                              $sql2 = "INSERT INTO pytania (ID_kategorii, tresc) VALUES ('$sesja', '$name')";
                               $sql3 = "SET FOREIGN_KEY_CHECKS=1";
                               $result1 = $conn->query($sql1);
                               $result2 = $conn->query($sql2);
