@@ -39,7 +39,7 @@ $result = $conn->query($query);
     </script>
     <style>
 
-        /* MENU */
+         /* MENU - div srodka strony */ 
 
         .menu{
             display: inline-block;
@@ -55,7 +55,7 @@ $result = $conn->query($query);
             border-bottom: 1px solid black;
         }
 
-        /* TABELA */
+        /* TABELA - div odpowiedający za tabele po stronie prawej */
 
         .tabela{
             text-align: center;
@@ -70,7 +70,7 @@ $result = $conn->query($query);
         }
 
 
-        /* CRUD */
+        /* CRUD - ciało tabeli do edycji */
 
         .crud{
             border-collapse: collapse;
@@ -116,7 +116,7 @@ $result = $conn->query($query);
             border-bottom: 1px solid #737373;
         }
 
-        /* DODAJ QUIZ */
+        /* DODAJ QUIZ - osobny div lewy */
 
         .dodajquiz{
             display: inline-block;
@@ -161,8 +161,8 @@ $result = $conn->query($query);
             <h2>EDYTOR QUIZÓW</h2>
         </div>
             <div class="dodajquiz">
-                <h2>Kreator quizów:</h2>
-                <p>Gotów na tworzenie ciekawych quizów?</p> 
+                <h2>Kreator kategorii:</h2>
+                <p>Gotów na tworzenie ciekawych kategorii?</p> 
                 <p>Zacznij teraz!</p>
                 <br><br>
             <button onclick="location.href='add.php'" type="button">Zaczynamy</button>

@@ -75,7 +75,11 @@ $user_data = check_login($con);
             <div class="wynik">
                 <h2>Test zakonczono!</h2>
             <p>Ukończono test z: <?php echo $_SESSION['kategorie'] ?></p>
+<<<<<<< HEAD
             <p>Twój wynik końcowy wynosi: <?php echo $_SESSION['score']."/".$_SESSION['total_questions']?></p>
+=======
+            <p>Twój wynik końcowy wynosi: <?php echo $_SESSION['score'] ."/".$_SESSION['total_questions']?></p>
+>>>>>>> f01d9f5ec6c08d7d410f59e1216991572e26e4d9
                 <?php 
                     $_SESSION['score'] = 0;
                 ?> 

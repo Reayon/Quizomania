@@ -21,149 +21,28 @@ session_start();
         <title>Quizomania</title>
     </head>
     <style>
+
+        /* MENU - div srodka strony */ 
+
 		.menu{
 			text-align: center;
 		}
+
+        /* P - paragraf całej strony */
+
 		p{
 			margin: 30px;
 			font-size: 17px;
 		}
-        .tabela{
-            width: 100%;
-            height: auto;
-            display: flex;
-            justify-content: center;
-            text-align: center;
-            background: white;
-        }
 
+        /* NAGLÓWEK H2 */
+        
         h2{
 			font-size: 30px;
             text-align: center;
         }
 
-        .content-table{
-            width: 50%;
-            height: auto;
-            overflow: hidden;
-            font-size: 25px;
-            text-decoration: none;
-            align-items: center;
-            border: 1px solid #666666;
-            padding: 10px;
-        }
 
-        .content-table a{
-            color: black;
-            font-size: 20px;
-        }
-
-        .content-table a:hover{
-            transition: .5s;
-            border-color: #2691d9;
-        }
-
-        .content-table a:visited{
-            transition: .5s;
-            border-color: #2691d9;
-        }
-
-        .content-table thead th{
-            background: #2691d9;
-            width: 100%;
-            height: 50px;
-            color: white;
-            font-size: 25px;
-            text-decoration: none;
-            text-align: center;
-        }
-
-        .content-table tbody
-        {
-            color: black;
-            width: 100%;
-            font-size: 25px;
-            background-color: #2980b9;
-        }
-
-        .content-table tbody td{
-            display: block;
-            background: linear-gradient(120deg, #2980b9, #8e44ad);
-            width: 100%;
-            text-align: center;
-            font-size: 20px;
-            padding-bottom: 20px;
-            font-weight: bold;
-        }
-        input[type="submit"]{
-            width: 40%;
-            height: 50px;
-            border: 1px solid;
-            background: #2691d9;
-            border-radius: 25px;
-            font-size: 18px;
-            color: #e9f4fb;
-            font-weight: 700;
-            outline: none;
-            cursor: pointer;
-        }
-
-        input[type="submit"]:hover{
-            border-color: #2691d9;
-            transition: .5s;
-        }
-        .searchbar{
-            width: 100%;
-            height: 10px;
-            background: rgba(255,255,0,0.2);
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            border-radius: 60px;
-            padding: 20px;
-            font-size: 15px;
-            margin-top: 10px;
-            margin-right: 50px;
-            backdrop-filter: blur(4px) saturate(180%);
-        }
-
-        .searchbar button{
-            display: block;
-            border: 0;
-            outline: none;
-            font-size: 20px;
-            color: #cac77c;
-            font-family: 'Poppins', sans-serif;
-        }
-
-        .searchbar i {
-           color: white;
-           margin-right: 30px;
-        }
-
-        .searchbar button[type="submit"]{
-            border-radius: 20px;
-            height: 40px;
-            width: 30px;
-            background: #58629b;
-            cursor: pointer;
-            margin-left: 10px;
-        }
-
-        .search{
-            display: flex;
-            flex-direction: row;
-            justify-content: center;
-        }
-
-        .search h2{
-            margin-right: 50px;
-        }
-
-        .searchbar input img[type="submit"]{
-            width: 5px;
-            height: 5px;
-        }
     </style>
     <body>
         <header style="height: 125px">

@@ -29,6 +29,8 @@ $result = $conn->query($query);
 
     <style>
 
+        /* MENU - div srodka strony */  
+
         .menu{
             display: inline-block;
             text-align: center;
@@ -39,9 +41,13 @@ $result = $conn->query($query);
             font-weight: 500px;
         }
 
+        /* TITLE - naglowek strony z odkreślajacą linią */
+
         .title{
             border-bottom: 1px solid black;
         }
+
+        /* SRODEK - div potrzebny do wyśrodkowania tabeli lub jakiegos inputa */ 
 
         .srodek{
             position: absolute;
@@ -59,6 +65,8 @@ $result = $conn->query($query);
             text-align: center;
         }
 
+        /* TABELA - div odpowiedający za tabele */
+
         .tabela{
             float: right;
         }
@@ -70,6 +78,17 @@ $result = $conn->query($query);
         .tabela tbody p{
             color: green;
         }
+
+        .tabela td button{
+            padding: 9px 25px;
+            background-color: rgba(0,136,169,1);
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.3s ease 0s;
+        }
+
+        /* INPUT */
 
         input[type="text"]{
             margin-left: 10px;
@@ -87,14 +106,7 @@ $result = $conn->query($query);
             transition: .5s;
         }
 
-        .tabela td button{
-            padding: 9px 25px;
-            background-color: rgba(0,136,169,1);
-            border: none;
-            border-radius: 50px;
-            cursor: pointer;
-            transition: all 0.3s ease 0s;
-        }
+        /* BUTTON - przycisk powrotu */
 
         button:hover{
             background-color: rgba(0,136,169,0);
