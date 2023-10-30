@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Paź 28, 2023 at 08:41 PM
+-- Generation Time: Paź 30, 2023 at 10:43 PM
 -- Wersja serwera: 10.4.28-MariaDB
 -- Wersja PHP: 8.2.4
 
@@ -42,7 +42,8 @@ INSERT INTO `kategorie` (`ID_kategorii`, `nazwa`) VALUES
 (3, 'Matematyka'),
 (4, 'Biologia'),
 (5, 'Geografia'),
-(6, 'Piłka nożna');
+(6, 'Piłka nożna'),
+(37, 'Angielski');
 
 -- --------------------------------------------------------
 
@@ -109,7 +110,11 @@ INSERT INTO `odpowiedzi` (`ID_odpowiedzi`, `ID_pytania`, `odp`, `czy_poprawna`) 
 (49, 13, 'Zbigniew Boniek', 0),
 (50, 13, 'Łukasz Piszczek', 0),
 (51, 13, 'Cezary Kulesza', 1),
-(52, 13, 'Cezary Pazura', 0);
+(52, 13, 'Cezary Pazura', 0),
+(113, 34, 'Dog', 1),
+(114, 34, 'Cat', 0),
+(115, 34, 'Fish', 0),
+(116, 34, 'Cow', 0);
 
 -- --------------------------------------------------------
 
@@ -137,9 +142,10 @@ INSERT INTO `pytania` (`ID_pytania`, `ID_kategorii`, `tresc`) VALUES
 (8, 3, 'Ułamek 15/25 równa się?'),
 (9, 3, '6*8=?'),
 (10, 4, 'Aorta to największa w ciele człowieka:?'),
-(11, 4, 'Kwas deoksyrybonukleinowy jak inaczej się nazywa?'),
+(11, 4, 'Kwas deoksyrybonukleinowy jaki jest jego skrót?'),
 (12, 6, 'W jakim klubie obecnie gra Cristiano Ronaldo (Stan na 28.10.2023)?'),
-(13, 6, 'Prezesem Polskiego Związku Piłki Nożnej (PZPN) jest (Stan na 28.10.2023)?');
+(13, 6, 'Prezesem Polskiego Związku Piłki Nożnej (PZPN) jest (Stan na 28.10.2023)?'),
+(34, 37, 'Jak po angielsku powiesz słowo pies?');
 
 --
 -- Indeksy dla zrzutów tabel
@@ -173,19 +179,19 @@ ALTER TABLE `pytania`
 -- AUTO_INCREMENT for table `kategorie`
 --
 ALTER TABLE `kategorie`
-  MODIFY `ID_kategorii` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+  MODIFY `ID_kategorii` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=38;
 
 --
 -- AUTO_INCREMENT for table `odpowiedzi`
 --
 ALTER TABLE `odpowiedzi`
-  MODIFY `ID_odpowiedzi` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=53;
+  MODIFY `ID_odpowiedzi` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=117;
 
 --
 -- AUTO_INCREMENT for table `pytania`
 --
 ALTER TABLE `pytania`
-  MODIFY `ID_pytania` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+  MODIFY `ID_pytania` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=35;
 
 --
 -- Constraints for dumped tables

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Paź 28, 2023 at 08:40 PM
+-- Generation Time: Paź 30, 2023 at 10:43 PM
 -- Wersja serwera: 10.4.28-MariaDB
 -- Wersja PHP: 8.2.4
 
@@ -41,8 +41,7 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `userid`, `username`, `password`, `date`, `email`) VALUES
-(3, 7623883860263612009, 'debil', '1234', '2023-10-28 18:36:57', 'debil@wp.pl'),
-(7, 9223372036854775807, 'Dupson1338', '1337', '2023-10-28 18:40:40', 'DupaJasiu@wiertarka.sa');
+(18, 7408730884342441416, 'Marek', '$2y$10$/4bwtKhzE2xE44UF1juidudC/nlUpIZtgDNbjrCuMOO.I97ZiAHTy', '2023-10-30 20:34:42', 'Marek1337@wp.pl');
 
 --
 -- Indeksy dla zrzutów tabel
@@ -65,7 +64,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
