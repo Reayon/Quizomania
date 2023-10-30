@@ -374,3 +374,11 @@ footer{
     word-spacing: 2px;
     text-transform: capitalize;
 }
+
+/* KOMUNIKAT O BŁEDZIE */
+
+.error-message {
+    color: red;
+    margin-top: 15px;
+    font-weight: bold;
+}

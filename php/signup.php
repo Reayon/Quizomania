@@ -4,28 +4,30 @@ session_start();
 	include("connection.php");
 	include("function.php");
 
-
 	if($_SERVER['REQUEST_METHOD'] == "POST")
+{
+	$username = $_POST['username'];
+	$password = $_POST['password'];
+	$email = $_POST['email'];
+
+	if(!empty($username) && !empty($password) && !empty($email) && !is_numeric($username))
 	{
-		$username = $_POST['username'];
-		$password = $_POST['password'];
-		$email = $_POST['email'];
+		// Użycie password_hash do zhaszowania hasła przed zapisaniem go
+		$hashed_password = password_hash($password, PASSWORD_DEFAULT);
 
-		if(!empty($username) && !empty($password) && !is_numeric($username))
-		{
+		$userid = random_num(20);
 
-			$userid = random_num(20);
-			$query = "insert into users (userid,username,password,email) values ('$userid','$username','$password','$email')";
+		// Użycie przygotowanej instrukcji dla lepszej ochrony
+		$stmt = $con->prepare("INSERT INTO users (userid, username, password, email) VALUES (?, ?, ?, ?)");
+		$stmt->bind_param("ssss", $userid, $username, $hashed_password, $email);
+		$stmt->execute();
 
-			mysqli_query($con, $query);
-
-			header("Location: login.php");
-			die;
-		}else
-		{
-			echo "Please enter some valid information!";
-		}
+		header("Location: login.php");
+		die;
+	} else {
+		echo "Please enter some valid information!";
 	}
+}
 ?>
 <!DOCTYPE html>
 <html lang="pl">

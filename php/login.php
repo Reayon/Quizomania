@@ -5,37 +5,39 @@ session_start();
 	include("connection.php");
 	include("function.php");
 
+	$error_message = "";
 
-	if($_SERVER['REQUEST_METHOD'] == "POST")
-	{
+	if($_SERVER['REQUEST_METHOD'] == "POST") {
 		//something was posted
 		$username = $_POST['username'];
 		$password = $_POST['password'];
-
-		if(!empty($username) && !empty($password) && !is_numeric($username))
-		{
-
-			//read from database
-			$query = "select * from users where username = '$username' limit 1";
-			$result = mysqli_query($con, $query);
-
-			if($result)
-			{
-				if($result && mysqli_num_rows($result) > 0)
-				{
-
-					$user_data = mysqli_fetch_assoc($result);
-					
-					if($user_data['password'] === $password)
-					{
-
-						$_SESSION['userid'] = $user_data['userid'];
-						header("Location: stronaGlowna.php");
-						die;
-					}
+	
+		if(!empty($username) && !empty($password) && !is_numeric($username)) {
+	
+			// Użycie przygotowanej instrukcji dla lepszej ochrony
+			$stmt = $con->prepare("SELECT * FROM users WHERE username = ? OR email = ? LIMIT 1");
+			$stmt->bind_param("ss", $username, $username);
+			$stmt->execute();
+	
+			$result = $stmt->get_result();
+	
+			if($result && $result->num_rows > 0) {
+				$user_data = $result->fetch_assoc();
+				
+				// Użycie password_verify do sprawdzenia hasła
+				if(password_verify($password, $user_data['password'])) {
+					$_SESSION['userid'] = $user_data['userid'];
+					header("Location: stronaGlowna.php");
+					die;
+				} else {
+					$error_message = "Podane hasło jest nieprawidłowe.";
 				}
+			} else {
+				$error_message = "Użytkownik o podanym username/emailu nie istnieje.";
 			}
-		}	
+		} else {
+			$error_message = "Proszę podać prawidłowy username/email i hasło.";
+		}
 	}
 
 ?>
@@ -52,6 +54,16 @@ session_start();
         <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond&family=Poppins:wght@300&display=swap" rel="stylesheet">
         <title>Quizomania</title>
     </head>
+	<style>
+		.error-message {
+		color: red;
+		font-size: 16px;
+		text-align: center;
+		margin-top: 10px;
+		font-weight: bold;
+	}
+	</style>
+
     <body>
 		<header>
 			<img src="../src/logo3.png" class="logo"  alt="logo">
@@ -75,6 +87,9 @@ session_start();
 						Nie masz konta? <a href="../php/signup.php">Zarejestruj się</a>
 					</div>
 		</form>
+			<?php if(!empty($error_message)): ?>
+        	<div class="error-message"><?php echo $error_message; ?></div>
+    		<?php endif; ?>
 		</div>
             <footer>
             	<div class="footer-bottom">
