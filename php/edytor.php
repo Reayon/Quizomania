@@ -144,7 +144,7 @@ $result = $conn->query($query);
 
     </style>
     <body>
-        <header style="height: 100px">
+        <header style="height: 90px">
            <img class="logo" src="../src/logo3.png" alt="logo">
 				<nav>
 					<ul class="nav_links">
@@ -156,9 +156,10 @@ $result = $conn->query($query);
 				</nav>
 				<a class="cta" href="../php/logout.php"><button>Wyloguj sie</button></a>
 	    </header>
-        <div style="height: 680px" class="menu">
+        <div style="height: 730px" class="menu">
         <div class="title">
             <h2>EDYTOR QUIZÓW</h2>
+            <p style="color:red">UWAGA: zanim usuniesz kategorie musisz usunąć związane z nią pytania i odpowiedzi!!!</p>
         </div>
             <div class="dodajquiz">
                 <h2>Kreator kategorii:</h2>
