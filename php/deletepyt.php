@@ -20,7 +20,6 @@ $result = $conn->query($query);
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="stylesheet" href="../css/styl.css">
         <link rel="stylesheet" href="../css/buttons.css">
-        <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond&family=Poppins:wght@300&display=swap" rel="stylesheet">
@@ -29,14 +28,21 @@ $result = $conn->query($query);
     </head>
 
     <style>
+
+             /* MENU - div srodka strony */ 
+
             .menu{
                 display: block;
                 text-align: center;
             }
 
+            /* TITLE - naglowek strony z odkreślajacą linią */
+
             .title{
                 border-bottom: 1px solid black;
             }
+
+            /* SRODEK - div potrzebny do wyśrodkowania tabeli lub jakiegos inputa */ 
 
             .srodek{
                 position: absolute;
@@ -47,11 +53,16 @@ $result = $conn->query($query);
                 transform: translate(-50%, -50%);
             }
 
+            /* BUTTON w środku div'a TABELA */
+
+            .tabela button{
+                margin-right: 15px;
+            }
 
         </style>
 
     <body>
-    <header>
+    <header style="height: 100px;">
 			<img class="logo" src="../src/logo3.png" alt="logo">
 				<nav>
 					<ul class="nav_links">
@@ -68,7 +79,7 @@ $result = $conn->query($query);
             <h2>USUWANIE PYTANIA I ODPOWIEDZI</h2>
             </div>
             <div class="srodek">
-                <table class="table">
+                <table class="tabela">
                     <thead>
                         <tr>
                             <th scope="col">Twoje rekordy zostały pomyślnie<p style=color:red>Usunięte</p></th>

@@ -37,7 +37,6 @@ $_SESSION['current_question'] = 0;
         <meta name="description" content="www.quizomania.pl">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="stylesheet" href="../css/styl.css">
-        <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -47,161 +46,175 @@ $_SESSION['current_question'] = 0;
     </head>
     <style>
 
-.tabela{
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    text-align: center;
-    background: white;
-    overflow-y: scroll;
-    max-height: 570px;
-}
+        /* TABELA - div odpowiedający za tabele po stronie prawej */
 
-h2{
-    text-align: center;
-}
+        .tabela{
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            text-align: center;
+            background: white;
+            overflow-y: scroll;
+            max-height: 570px;
+        }
 
-.content-table{
-    width: 50%;
-    height: auto;
-    overflow: hidden;
-    font-size: 25px;
-    text-decoration: none;
-    align-items: center;
-    border: 1px solid #666666;
-    padding: 10px;
-}
+        /* NAGLOWEK H2 dla całej strony */
 
-.content-table a{
-    color: black;
-    font-family: 'Poppins', sans-serif;
-    font-size: 20px;
-    font-weight: 800;
-}
+        h2{
+            text-align: center;
+        }
 
-.content-table a:hover{
-    transition: .5s;
-    border-color: #2691d9;
-}
+        /* CONTENT-TABLE - div klasy odpowiadającej za tabele z listą quizów */
 
-.content-table a:visited{
-    transition: .5s;
-    border-color: #2691d9;
-}
+        .content-table{
+            width: 50%;
+            height: auto;
+            overflow: hidden;
+            font-size: 25px;
+            text-decoration: none;
+            align-items: center;
+            border: 1px solid #666666;
+            padding: 10px;
+        }
 
-.content-table thead th{
-    background: #2691d9;
-    width: 100%;
-    height: 50px;
-    color: white;
-    font-size: 25px;
-    text-decoration: none;
-    text-align: center;
-}
+        .content-table a{
+            color: black;
+            font-family: 'Poppins', sans-serif;
+            font-size: 20px;
+            font-weight: 800;
+        }
 
-.content-table tbody
-{
-    color: black;
-    width: 100%;
-    font-size: 15px;
-    background-color: #2980b9;
-    font-family: 'Poppins', sans-serif;
-    
-}
+        .content-table a:hover{
+            transition: .5s;
+            border-color: #2691d9;
+        }
 
-.content-table tbody td{
-    display: block;
-    background: linear-gradient(120deg, #2980b9, #8e44ad);
-    width: 100%;
-    text-align: center;
-    font-size: 20px;
-    padding-bottom: 20px;
-    font-weight: bold;
-    color: red;
-}
+        .content-table a:visited{
+            transition: .5s;
+            border-color: #2691d9;
+        }
 
-.content-table tbody td{
-    color: white;
-}
+        .content-table thead th{
+            background: #2691d9;
+            width: 100%;
+            height: 50px;
+            color: white;
+            font-size: 25px;
+            text-decoration: none;
+            text-align: center;
+        }
 
-input[type="submit"]{
-    width: 40%;
-    height: 50px;
-    border: 1px solid;
-    background: #2691d9;
-    border-radius: 25px;
-    font-size: 18px;
-    color: #e9f4fb;
-    font-weight: 700;
-    outline: none;
-    cursor: pointer;
-}
+        .content-table tbody
+        {
+            color: black;
+            width: 100%;
+            font-size: 15px;
+            background-color: #2980b9;
+            font-family: 'Poppins', sans-serif;
+            
+        }
 
-input[type="submit"]:hover{
-    border-color: #2691d9;
-    transition: .5s;
-}
+        .content-table tbody td{
+            display: block;
+            background: linear-gradient(120deg, #2980b9, #8e44ad);
+            width: 100%;
+            text-align: center;
+            font-size: 20px;
+            padding-bottom: 20px;
+            font-weight: bold;
+            color: red;
+        }
 
-.txt_field{
-    font-family: 'Poppins', sans-serif;
-}
+        .content-table tbody td{
+            color: white;
+        }
 
-.searchbar{
-    width: 300px;
-    height: 10px;
-    background: rgba(255,255,0,0.2);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    border-radius: 60px;
-    padding: 20px;
-    font-size: 15px;
-    margin-top: 10px;
-    margin-right: 50px;
-    backdrop-filter: blur(4px) saturate(180%);
-}
+        /* INPUT */
 
-.searchbar button{
-    display: block;
-    border: 0;
-    outline: none;
-    font-size: 20px;
-    color: #cac77c;
-    font-family: 'Poppins', sans-serif;
-}
+        input[type="submit"]{
+            width: 40%;
+            height: 50px;
+            border: 1px solid;
+            background: #2691d9;
+            border-radius: 25px;
+            font-size: 18px;
+            color: #e9f4fb;
+            font-weight: 700;
+            outline: none;
+            cursor: pointer;
+        }
 
-.searchbar i {
-   color: white;
-   display: flex;
-   justify-content: center;
-}
+        input[type="submit"]:hover{
+            border-color: #2691d9;
+            transition: .5s;
+        }
 
-.searchbar button[type="submit"]{
-    border-radius: 30px;
-    height: 50px;
-    width: 30px;
-    background: #58629b;
-    cursor: pointer;
-    margin-left: 10px;
-}
+        /* TXT_FIELD - div gdzie znajduje się wyszukiwarka quizów */
 
-.search{
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-}
+        .txt_field{
+            font-family: 'Poppins', sans-serif;
+        }
 
-.search h2{
-    margin-right: 50px;
-    margin-left: 75px;
-}
+        /* SEARCHBAR - odpowiada za wyszukiwanie w liście quizów */
 
-.searchbar input img[type="submit"]{
-    width: 5px;
-    height: 5px;
-}
+        .searchbar{
+            width: 300px;
+            height: 10px;
+            background: rgba(255,255,0,0.2);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border-radius: 60px;
+            padding: 20px;
+            font-size: 15px;
+            margin-top: 10px;
+            margin-right: 50px;
+            backdrop-filter: blur(4px) saturate(180%);
+        }
+
+        .searchbar button{
+            display: block;
+            border: 0;
+            outline: none;
+            font-size: 20px;
+            color: #cac77c;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        .searchbar i {
+            color: white;
+            display: flex;
+            justify-content: center;
+        }
+
+        .searchbar button[type="submit"]{
+            border-radius: 30px;
+            height: 50px;
+            width: 30px;
+            background: #58629b;
+            cursor: pointer;
+            margin-left: 10px;
+        }
+
+        .search{
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+        }
+
+        .search h2{
+            margin-right: 50px;
+            margin-left: 75px;
+        }
+
+        .searchbar input img[type="submit"]{
+            width: 5px;
+            height: 5px;
+        }
 
 </style>
+
+        <!-- SKRYPT ODPOWIADAJĄCY ZA SEARCHBAR (JS) -->
     <script>
         // Opcjonalne: Jeśli chcesz umożliwić dynamiczne dostosowywanie wysokości tabeli na podstawie zawartości
         window.addEventListener('DOMContentLoaded', () => {
@@ -231,7 +244,7 @@ input[type="submit"]:hover{
                     <h2>Lista Quizów</h2>
                     <div class="txt_field">
                         <form action="stronaGlowna.php" method="post" class="searchbar">
-                        <input type="text" class="form-control" name="valueToSearch" placeholder="Wyszukaj swoją kategorie: "><br><br>
+                        <input style="font-family: 'Poppins', sans-serif;" type="text" class="form-control" name="valueToSearch" placeholder="Wyszukaj swoją kategorie: "><br><br>
                         <button type="submit" value="" name="search"><i class="bi bi-search"></i></button>
                     </div>
                 </div>

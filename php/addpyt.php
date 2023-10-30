@@ -164,7 +164,7 @@ $result = $conn->query($query);
             <h2>KREATOR PYTAN</h2>
             </div>
             <div class="srodek">
-                    <p>Stwórz nazwę pytania twojej katerogii.</p>
+                    <p>Stwórz nazwę pytania dla twojej kategorii.</p>
                     <p>Podaj nazwę i kliknij przycisk "Zatwierdź pytanie",
                     następnie "Wroć do edytora" wyszukaj swoją kategorie na liście dostępnych i wybierz opcje edytuj pytanie aby dodać odpowiedzi.</p>
                 <table class="tabela">

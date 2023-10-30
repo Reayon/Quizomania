@@ -61,7 +61,7 @@ $user_data = check_login($con);
 
     <body>
         <header style="height: 125px">
-			<img class="logo" src="../src/logoquiz.png" alt="logo">
+			<img class="logo" src="../src/logo3.png" alt="logo">
 				<nav>
 					<ul class="nav_links">
 							<li><a href="../php/stronaGlowna.php">Strona główna</a></li>
@@ -75,7 +75,7 @@ $user_data = check_login($con);
             <div class="wynik">
                 <h2>Test zakonczono!</h2>
             <p>Ukończono test z: <?php echo $_SESSION['kategorie'] ?></p>
-            <p>Twój wynik końcowy wynosi: <?php echo $_SESSION['score']?></p>
+            <p>Twój wynik końcowy wynosi: <?php echo $_SESSION['score'] ."/".$_SESSION['total_questions']?></p>
                 <?php 
                     $_SESSION['score'] = 0;
                 ?> 

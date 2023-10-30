@@ -27,14 +27,21 @@ $result = $conn->query($query);
         <title>Quizomania</title>
     </head>
         <style>
+
+            /* MENU - div srodka strony */ 
+
             .menu{
                 display: block;
                 text-align: center;
             }
 
+            /* TITLE - naglowek strony z odkreślajacą linią */
+
             .title{
                 border-bottom: 1px solid black;
             }
+
+            /* SRODEK - div potrzebny do wyśrodkowania tabeli lub jakiegos inputa */ 
 
             .srodek{
                 position: absolute;
@@ -45,11 +52,16 @@ $result = $conn->query($query);
                 transform: translate(-50%, -50%);
             }
 
+            /* BUTTON w środku div'a TABELA */
+
+            .tabela button{
+                margin-right: 15px;
+            }
 
         </style>
 
     <body>
-    <header>
+    <header style="height: 100px;">
 			<img class="logo" src="../src/logo3.png" alt="logo">
 				<nav>
 					<ul class="nav_links">
@@ -102,6 +114,7 @@ $result = $conn->query($query);
                     ?>
                     <td><button onclick="location.href='edytor.php'" type="button">Wróć do edytora</button></td>
                     </table>
+                    </tbody>
                 </div>
                     </div>
                 <footer>

@@ -24,7 +24,6 @@ session_start();
 
     <style>
 
-
         .tabela{
             width: 100%;
             height: auto;
@@ -83,6 +82,15 @@ session_start();
             font-size: 20px;
             padding-bottom: 20px;
             font-weight: bold;
+        }
+
+        .choices li{
+            background-color: #666666;
+        }
+
+        .choices li:hover{
+            background-color: #b3b3b3;
+            transition: 0.5s;
         }
 
         input[type="submit"]{
@@ -214,6 +222,9 @@ session_start();
         $count_query = "SELECT COUNT(*) AS total FROM pytania WHERE id_kategorii = $category_id";
         $count_result = $conn->query($count_query);
         $total_questions = $count_result->fetch_assoc()['total'];
+
+        // Sesja do wyliczenia wszystkich pytań
+        $_SESSION['total_questions'] = $total_questions;
         
 
         // Jeśli tak, przenosimy użytkownika na stronę wyników. W przeciwnym przypadku odświeżamy stronę.
