@@ -214,7 +214,7 @@ session_start();
         $count_query = "SELECT COUNT(*) AS total FROM pytania WHERE id_kategorii = $category_id";
         $count_result = $conn->query($count_query);
         $total_questions = $count_result->fetch_assoc()['total'];
-        
+        $_SESSION['total_questions'] = $total_questions;
 
         // Jeśli tak, przenosimy użytkownika na stronę wyników. W przeciwnym przypadku odświeżamy stronę.
             if ($_SESSION['current_question'] >= $total_questions) {
